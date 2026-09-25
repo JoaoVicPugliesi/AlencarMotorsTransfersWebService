@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService#readme",
   "dependencies": {
+    "@fastify/cors": "^11.3.0",
     "@types/node": "^26.6.2",
+    "fastify": "^5.12.5",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }
