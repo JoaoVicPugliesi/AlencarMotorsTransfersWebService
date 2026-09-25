@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService/issues"
   },
-  "homepage": "https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService#readme"
+  "homepage": "https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService#readme",
+  "dependencies": {
+    "@types/node": "^26.6.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
 }
