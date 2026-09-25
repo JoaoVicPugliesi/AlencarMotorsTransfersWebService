@@ -1,19 +1,21 @@
 {
   "name": "webserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "Alencar Motors Transfers is responsible for tracking several vehicle transfer processes, allowing users to be aware of new changes through a real time notification system.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "João Pugliesi",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/JoaoVicPugliesi/AlencarMotorsTransfersWebService/issues"
   },
