@@ -1,4 +1,4 @@
-import Server, { Request_Callback, Response_Callback } from "../../domain/services/server/Server.js";
+import Server from "../../domain/services/server/Server.js";
 import Delete from "./DELETE/Delete.js";
 import Get from "./GET/Get.js";
 import Post from "./POST/Post.js";
