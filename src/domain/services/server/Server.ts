@@ -32,18 +32,18 @@ interface Crud_Operations<
     callback: Route_Callback<TBody, TParams, TQuery>;
 }
 
-type LISTEN_PARAMS = {
+type Listen_Params = {
     port: number,
     host: string
 }
 
-type METHODS = "get" | "post" | "patch" | "delete";
+type Methods = "get" | "post" | "patch" | "delete";
 
 interface Server {
-    listen(params: LISTEN_PARAMS): Promise<unknown>;
+    listen(params: Listen_Params): Promise<unknown>;
     register(): Promise<void>
     run(): Promise<void>;
-    operation(method: METHODS, params: Crud_Operations<unknown, unknown, unknown>): void;
+    operation(method: Methods, params: Crud_Operations<unknown, unknown, unknown>): void;
     get<TBody = unknown, TParams = unknown, TQuery = unknown>(params: Crud_Operations<TBody, TParams, TQuery>): Promise<void>;
     post<TBody = unknown, TParams = unknown, TQuery = unknown>(params: Crud_Operations<TBody, TParams, TQuery>): Promise<void>;
     update<TBody = unknown, TParams = unknown, TQuery = unknown>(params: Crud_Operations<TBody, TParams, TQuery>): Promise<void>;
