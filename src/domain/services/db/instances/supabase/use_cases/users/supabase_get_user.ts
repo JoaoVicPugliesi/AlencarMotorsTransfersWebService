@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import User from "../../../../../domain/entitities/user/User.js";
-import DB_Error_Response from "../../../../../domain/services/db/DB_Error_Response.js";
+import User from "../../../../../../entitities/user/User.js";
+import DB_Error_Response from "../../../../parts/DB_Error_Response.js";
 
 async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: SupabaseClient): Promise<T | DB_Error_Response> {
     let query;

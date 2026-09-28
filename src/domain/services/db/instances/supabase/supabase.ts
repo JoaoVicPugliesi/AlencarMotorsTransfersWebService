@@ -1,8 +1,8 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import DB from "../../../domain/services/db/DB.js";
-import DB_Error_Response from "../../../domain/services/db/DB_Error_Response.js";
+import DB from "../../DB.js";
+import DB_Error_Response from "../../parts/DB_Error_Response.js";
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "./supabase_variables.js";
-import User from "../../../domain/entitities/user/User.js";
+import User from "../../../../entitities/user/User.js";
 import supabase_get_user from "./use_cases/users/supabase_get_user.js";
 
 class Supabase implements DB {
