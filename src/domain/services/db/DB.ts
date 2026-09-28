@@ -1,8 +1,10 @@
+import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
 import User from "../../entitities/user/User.js";
-import DB_Error_Response from "./parts/DB_Error_Response.js";
+import DB_Response from "./parts/DB_Response.js";
 
 interface DB { 
-    get_user<T>(params: Pick<User, 'username'>): Promise<T | DB_Error_Response>;
+    get_user<T>(params: Pick<User, 'username'>): Promise<DB_Response<T>>;
+    register<T>(params: Register_DTO_Request): Promise<DB_Response<T>>;
 }
 
 export default DB;

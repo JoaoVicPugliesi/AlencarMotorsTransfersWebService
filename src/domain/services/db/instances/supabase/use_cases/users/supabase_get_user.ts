@@ -1,8 +1,8 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import User from "../../../../../../entitities/user/User.js";
-import DB_Error_Response from "../../../../parts/DB_Error_Response.js";
+import DB_Response from "../../../../parts/DB_Response.js";
 
-async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: SupabaseClient): Promise<T | DB_Error_Response> {
+async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: SupabaseClient): Promise<DB_Response<T>> {
     let query;
     query = supabase
     .from('users')
@@ -14,18 +14,24 @@ async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: Su
     if(error) {
         return {
             status: 400,
-            message: `error: ${error}`
+            message: `Erro`,
+            payload: null
         }
     }
 
     if(!data) {
         return {
             status: 404,
-            message: 'Not Found'
+            message: 'Não encontrado',
+            payload: null
         }
     }
 
-    return data;
+    return {
+        status: 200,
+        message: 'Encontrado',
+        payload: data
+    };
 }
 
 export default supabase_get_user;
