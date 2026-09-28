@@ -11,7 +11,7 @@ class Argon2 implements Hash {
     }
     async hash_password(params: Hash_Password): Promise<string | Hash_Error_Response> {
         const { password } = params;
-        if(!password) {
+        if (!password) {
             return {
                 status: 400,
                 message: 'Senha precisa ser definida'
@@ -33,7 +33,7 @@ class Argon2 implements Hash {
     }
     async verify_password(params: Verify_Password): Promise<boolean | Hash_Error_Response> {
         const { hash, password } = params;
-        if(!hash || !password) {
+        if (!hash || !password) {
             return {
                 status: 400,
                 message: 'Hash e Senha precisam ser definidos'
