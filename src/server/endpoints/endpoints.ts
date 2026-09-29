@@ -19,16 +19,16 @@ class Endpoints {
     }
 
     private async get () {
-        this.get_i.run();
+        await this.get_i.run();
     }
     private async post () {
-        this.post_i.run();
+        await this.post_i.run();
     }
     private async update () {
-        this.update_i.run();
+        await this.update_i.run();
     }
     private async delete () {
-        this.delete_i.run();
+        await this.delete_i.run();
     }
 
     async run () {

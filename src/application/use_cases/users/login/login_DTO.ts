@@ -1,8 +1,8 @@
 import User from "../../../../domain/entitities/user/User.js";
 
-interface Register_DTO_Request extends Omit<User, 'id'> {}
+interface Login_DTO_Request extends Pick<User, 'username' | 'password'> {}
 
-interface Register_DTO_Response {
+interface Login_DTO_Response {
     status: number,
     json: {
         message: string,
@@ -10,4 +10,4 @@ interface Register_DTO_Response {
     }
 }
 
-export { Register_DTO_Request, Register_DTO_Response }
+export { Login_DTO_Request, Login_DTO_Response }

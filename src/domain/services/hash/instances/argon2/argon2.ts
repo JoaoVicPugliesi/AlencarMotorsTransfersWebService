@@ -27,7 +27,7 @@ class Argon2 implements Hash {
         } catch (err) {
             return {
                 status: 400,
-                message: `Hash Falhou ${err}`
+                message: `Hash Falhou`
             }
         }
     }
@@ -44,7 +44,7 @@ class Argon2 implements Hash {
         } catch (err) {
             return {
                 status: 422,
-                message: `Verificação Falhou ${err}`
+                message: `Verificação Falhou`
             }
         }
     }

@@ -6,6 +6,7 @@ import User from "../../../../entitities/user/User.js";
 import supabase_get_user from "./use_cases/users/supabase_get_user.js";
 import { Register_DTO_Request } from "../../../../../application/use_cases/users/register/register_DTO.js";
 import supabase_register from "./use_cases/users/supabase_register.js";
+import { Login_DTO_Request } from "../../../../../application/use_cases/users/login/login_DTO.js";
 
 class Supabase implements DB {
     private supabase;

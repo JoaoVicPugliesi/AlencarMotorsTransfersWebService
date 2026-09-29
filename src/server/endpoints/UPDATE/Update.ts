@@ -1,4 +1,4 @@
-import Server, { Request_Callback, Response_Callback } from "../../../domain/services/server/Server.js";
+import Server from "../../../domain/services/server/Server.js";
 
 class Update {
     private server;
@@ -6,7 +6,6 @@ class Update {
     constructor (server: Server) {
         this.server = server;
     }
-
     async run () {
        
     }

@@ -8,7 +8,7 @@ async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: Su
     .from('users')
     .select('*')
     .eq('username', params.username)
-    .single();
+    .maybeSingle();
 
     const { data, error } = await query;
     if(error) {
@@ -22,14 +22,14 @@ async function supabase_get_user<T>(params: Pick<User, 'username'>, supabase: Su
     if(!data) {
         return {
             status: 404,
-            message: 'Não encontrado',
+            message: 'Usuário não encontrado',
             payload: null
         }
     }
 
     return {
         status: 200,
-        message: 'Encontrado',
+        message: 'Usuário encontrado',
         payload: data
     };
 }

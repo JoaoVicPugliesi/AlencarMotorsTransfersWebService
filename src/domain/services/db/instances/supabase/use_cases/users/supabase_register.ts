@@ -8,10 +8,11 @@ async function supabase_register<T>(params: Register_DTO_Request, supabase: Supa
     .from('users')
     .insert(params)
     .select('*')
-    .single();
+    .maybeSingle();
 
     const { data, error } = await query;
 
+    console.log(error);
      if(error) {
         return {
             status: 400,
