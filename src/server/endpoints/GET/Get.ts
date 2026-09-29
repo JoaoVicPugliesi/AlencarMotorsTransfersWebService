@@ -1,3 +1,4 @@
+import get_users_caller from "../../../application/use_cases/users/get_users/get_users_caller.js";
 import Server from "../../../domain/services/server/Server.js";
 
 class Get {
@@ -6,7 +7,10 @@ class Get {
         this.server = server;
     }
     async run () {
-       
+       this.server.get({
+        url: '/get_users',
+        callback: get_users_caller
+       })
     }
 }
 

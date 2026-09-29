@@ -1,6 +1,6 @@
 import z from "zod";
-import { Register_DTO_Request } from "../../../../../../../../application/use_cases/users/register/register_DTO.js";
-import zod_validation_handler from "../../../helpers/zod_validation_handler.js";
+import { Register_DTO_Request } from "../../../../../../../application/use_cases/users/register/register_DTO.js";
+import zod_validation_handler from "../../helpers/zod_validation_handler.js";
 
 function zod_register (params: Register_DTO_Request, zod = z) {
     const schema = zod.object({

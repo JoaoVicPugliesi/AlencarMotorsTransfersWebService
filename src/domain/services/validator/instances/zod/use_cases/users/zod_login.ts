@@ -1,6 +1,6 @@
 import z from "zod";
-import zod_validation_handler from "../../../helpers/zod_validation_handler.js";
-import { Login_DTO_Request } from "../../../../../../../../application/use_cases/users/login/login_DTO.js";
+import { Login_DTO_Request } from "../../../../../../../application/use_cases/users/login/login_DTO.js";
+import zod_validation_handler from "../../helpers/zod_validation_handler.js";
 
 function zod_login (params: Login_DTO_Request, zod = z) {
     const schema = zod.object({

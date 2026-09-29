@@ -1,3 +1,4 @@
+import { Get_Users_DTO_Request } from "../../../application/use_cases/users/get_users/get_users_DTO.js";
 import { Login_DTO_Request } from "../../../application/use_cases/users/login/login_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
 
@@ -34,6 +35,8 @@ export type Validation_Result<T> = Validation_Success<T> | Validation_Failure;
 interface Validator {
     register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request>;
     login(params: Login_DTO_Request): Validation_Result<Login_DTO_Request>;
+    get_users(params: Get_Users_DTO_Request): Validation_Result<Get_Users_DTO_Request>;
+
 }
 
 export default Validator;

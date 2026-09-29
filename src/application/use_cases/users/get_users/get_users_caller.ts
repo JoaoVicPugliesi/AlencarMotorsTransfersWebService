@@ -1,0 +1,31 @@
+import Request_Callback from "../../../../domain/services/server/parts/Request_Callback.js";
+import Response_Callback from "../../../../domain/services/server/parts/Response_Callback.js";
+import validator from "../../../services/validator/validator.js";
+import get_users from "./get_users.js";
+import { Get_Users_DTO_Request, Get_Users_DTO_Response } from "./get_users_DTO.js";
+
+async function get_users_caller(req: Request_Callback<
+    unknown,
+    unknown,
+    Get_Users_DTO_Request
+>, res: Response_Callback) {
+    const params = req.query;
+    const is_valid = validator.get_users(params);
+
+    if (is_valid.success) {
+        const response: Get_Users_DTO_Response = await get_users(params);
+        res.status(response.status);
+        res.json(response.json);
+        return;
+    }
+
+    const { list } = is_valid.error;
+    res.status(422),
+        res.json({
+            message: list[0].errors[0].message,
+            customers: null
+        });
+    return;
+}
+
+export default get_users_caller;
