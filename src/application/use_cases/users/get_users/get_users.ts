@@ -1,35 +1,21 @@
 import User from "../../../../domain/entitities/user/User.js";
 import DB_Response from "../../../../domain/services/db/parts/DB_Response.js";
 import db from "../../../../infra/db.js";
+import is_authorized from "../../../helpers/is_authorized/is_authorized.js";
+import Is_Authorized_Response from "../../../helpers/is_authorized/is_authorized_response.js";
 import { Get_Users_DTO_Request, Get_Users_DTO_Response } from "./get_users_DTO.js";
 
 async function get_users(params: Get_Users_DTO_Request): Promise<Get_Users_DTO_Response> {
-    const is_user: DB_Response<User> = await db.get_user<User>({
-        username: params.username
-    });
-
-    if (is_user.status === 404 || !is_user.payload || Array.isArray(is_user.payload)) {
+    const is_auth: Is_Authorized_Response = await is_authorized(params.username);
+    if(!is_auth.is_authorized) {
         return {
-            status: is_user.status,
+            status: is_auth.status,
             json: {
-                message: is_user.message,
+                message: is_auth.message,
                 users: null
             }
         }
     }
-
-    const { role } = is_user.payload;
-
-    if (role !== 'admin') {
-        return {
-            status: 403,
-            json: {
-                message: 'Sem autorização',
-                users: null
-            }
-        }
-    }
-
     const users: DB_Response<User> = await db.get_users();
 
     if(users.status === 404 || !users || !Array.isArray(users)) {

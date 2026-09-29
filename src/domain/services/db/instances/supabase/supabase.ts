@@ -8,6 +8,9 @@ import supabase_get_users from "./use_cases/users/supabase_get_users.js";
 import DB from "../../DB.js";
 import DB_Response from "../../parts/DB_Response.js";
 import User from "../../../../entitities/user/User.js";
+import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
+import supabase_post_transfer from "./use_cases/transfers/supabase_post_transfer.js";
+import supabase_post_transfer_users from "./use_cases/transfers/supabase_post_transfer_users.js";
 
 class Supabase implements DB {
     private supabase;
@@ -22,6 +25,12 @@ class Supabase implements DB {
     }
     async get_users<T>(): Promise<DB_Response<T>> {
         return await supabase_get_users(this.supabase);
+    }
+    async post_transfer<T>(params: Omit<Post_Transfer_DTO_Request, "participants">): Promise<DB_Response<T>> {
+        return await supabase_post_transfer(params, this.supabase);
+    }
+    async post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_post_transfer_users(params, this.supabase);
     }
 }
 

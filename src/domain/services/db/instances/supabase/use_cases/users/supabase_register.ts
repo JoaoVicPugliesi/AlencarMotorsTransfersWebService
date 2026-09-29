@@ -23,7 +23,7 @@ async function supabase_register<T>(params: Register_DTO_Request, supabase: Supa
 
     return {
         status: 201,
-        message: 'Usuário adicionar com sucesso',
+        message: 'Usuário adicionado com sucesso',
         payload: data
     };
 }
