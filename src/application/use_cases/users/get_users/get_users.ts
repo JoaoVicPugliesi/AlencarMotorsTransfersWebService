@@ -19,7 +19,7 @@ async function get_users(params: Get_Users_DTO_Request): Promise<Get_Users_DTO_R
     }
     const users: DB_Response<User> = await db_get_users();
     const { status, message, payload } = users;
-    if(status === 404 || !payload || !Array.isArray(payload)) {
+    if(status !== 200 || !payload || !Array.isArray(payload)) {
         return {
             status: status,
             json: {

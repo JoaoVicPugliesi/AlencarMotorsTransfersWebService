@@ -13,6 +13,8 @@ import { Register_DTO_Request } from "../../../../../application/use_cases/users
 import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Get_Transfer_Users_DTO_Request, Get_Transfers_DTO_Request, Get_Transfers_Param } from "../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import supabase_get_transfers from "./use_cases/transfers/supabase_get_transfers.js";
+import { Get_Observations_DTO_Request } from "../../../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
+import supabase_get_observations from "./use_cases/observations/supabase_get_observations.js";
 
 class Supabase implements DB {
     private supabase;
@@ -39,6 +41,9 @@ class Supabase implements DB {
     }
     async get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_get_transfer_users(params, this.supabase);
+    }
+    async get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_get_observations(params, this.supabase);
     }
 }
 
