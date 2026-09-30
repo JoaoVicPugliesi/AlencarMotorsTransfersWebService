@@ -11,7 +11,7 @@ async function supabase_post_transfer<T>(params: Omit<Post_Transfer_DTO_Request,
         .maybeSingle()
 
     const { data, error } = await query;
-
+    console.log(error);
     if (error) {
         return {
             status: 400,

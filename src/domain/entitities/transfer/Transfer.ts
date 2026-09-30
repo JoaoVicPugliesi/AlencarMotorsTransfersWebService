@@ -7,9 +7,9 @@ interface Transfer {
     vehicle: string,
     code: string,
     status: Transfer_Status,
-    initial_date: Date,
-    term_date: Date,
-    final_date: Date | null,
+    initial_date: unknown,
+    term_date: unknown,
+    final_date: unknown | null,
     created_by: string
 }
 

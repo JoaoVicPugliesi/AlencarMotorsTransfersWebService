@@ -22,8 +22,10 @@ function zod_register (params: Register_DTO_Request, zod = z) {
 
     role: zod
         .enum(["admin", "user"])
-        .nonoptional()
-    }) 
+        .nonoptional(),
+    admin_username: zod.string().nonempty()
+    });
+
     const is_valid = schema.safeParse(params);
     return zod_validation_handler(is_valid);
 }

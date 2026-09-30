@@ -7,6 +7,8 @@ import zod_login from "./use_cases/users/zod_login.js";
 import zod_get_users from "./use_cases/users/zod_get_users.js";
 import { Post_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import zod_post_transfer from "./use_cases/transfers/zod_post_transfer.js";
+import { Get_Transfers_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
+import zod_get_transfers from "./use_cases/transfers/zod_get_transfers.js";
 
 class Zod implements Validator {
     register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request> {
@@ -20,6 +22,9 @@ class Zod implements Validator {
     }
     post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request> {
         return zod_post_transfer(params);
+    }
+    get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
+        return zod_get_transfers(params);
     }
 }
 

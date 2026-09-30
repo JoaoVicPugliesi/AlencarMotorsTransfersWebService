@@ -28,16 +28,15 @@ function zod_post_transfer(
             .string()
             .min(1, "O código é obrigatório")
             .trim(),
-        initial_date: zod
-            .coerce
-            .date({
-                error: "A data inicial é inválida"
-            }),
-        term_date: zod
-            .coerce
-            .date({
-                error: "A data de término é inválida"
-            }),
+        initial_date: zod.iso.datetime({
+            local: true,
+            error: "A data inicial deve ser um timestamp válido"
+        }),
+
+        term_date: zod.iso.datetime({
+            local: true,
+            error: "A data de término deve ser um timestamp válido"
+        }),
         created_by: zod
             .string(),
         participants: zod

@@ -2,24 +2,36 @@ import User from "../../../../domain/entitities/user/User.js";
 import DB_Response from "../../../../domain/services/db/parts/DB_Response.js";
 import Hash_Error_Response from "../../../../domain/services/hash/parts/Hash_Error_Response.js";
 import db from "../../../../infra/db.js";
+import is_authorized from "../../../helpers/is_authorized/is_authorized.js";
+import Is_Authorized_Response from "../../../helpers/is_authorized/is_authorized_response.js";
 import hash from "../../../services/hash/hash.js";
 import { Register_DTO_Request, Register_DTO_Response } from "./register_DTO.js";
 
 async function register(params: Register_DTO_Request): Promise<Register_DTO_Response> {
-    const is_user: DB_Response<User> = await db.get_user<User>({
+    const is_auth: Is_Authorized_Response = await is_authorized(params.admin_username);
+    if(!is_auth.is_authorized) {
+        return {
+            status: is_auth.status,
+            json: {
+                message: is_auth.message,
+                user: null
+            }
+        }
+    }
+    const user: DB_Response<User> = await db.get_user<User>({
         username: params.username
     });
-    if (is_user.status === 400) {
+    if (user.status === 400) {
         return {
-            status: is_user.status,
+            status: user.status,
             json: {
-                message: is_user.message,
+                message: user.message,
                 user: null
             }
         };
     }
     
-    if (is_user.status === 200) {
+    if (user.status === 200) {
         return {
             status: 409,
             json: {
@@ -43,23 +55,26 @@ async function register(params: Register_DTO_Request): Promise<Register_DTO_Resp
         }
     }
     const response: DB_Response<User> = await db.register<User>({
-        ...params,
+        username: params.username,
+        role: params.role,
         password: hashed_password
     });
-    if (response.status !== 201 || !response.payload) {
+
+    const { status, message, payload } = response;
+    if (status !== 201 || !payload || Array.isArray(payload)) {
         return {
-            status: response.status,
+            status: status,
             json: {
-                message: response.message,
+                message: message,
                 user: null
             }
         }
     }
-    const { id, username, role } = response.payload;
+    const { id, username, role } = payload;
     return {
-        status: response.status,
+        status: status,
         json: {
-            message: response.message,
+            message: message,
             user: {
                 id,
                 username,

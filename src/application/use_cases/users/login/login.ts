@@ -6,19 +6,20 @@ import hash from "../../../services/hash/hash.js";
 import { Login_DTO_Request, Login_DTO_Response } from "./login_DTO.js";
 
 async function login (params: Login_DTO_Request): Promise<Login_DTO_Response> {
-    const is_user: DB_Response<User> = await db.get_user<User>({
+    const user: DB_Response<User> = await db.get_user<User>({
         username: params.username
     });
-    if (is_user.status === 400) {
+    const { status, message, payload } = user;
+    if (status === 400) {
         return {
-            status: is_user.status,
+            status: status,
             json: {
-                message: is_user.message,
+                message: message,
                 user: null
             }
         };
     }
-    if(is_user.status === 404 || !is_user.payload) {
+    if(status === 404 || !payload || Array.isArray(payload)) {
         return {
             status: 400,
             json: {
@@ -28,7 +29,7 @@ async function login (params: Login_DTO_Request): Promise<Login_DTO_Response> {
         }   
     }
     
-    const { id, username, password, role } = is_user.payload;
+    const { id, username, password, role } = payload;
     
     const is_password: boolean | Hash_Error_Response = await hash.verify_password({
         hash: password,

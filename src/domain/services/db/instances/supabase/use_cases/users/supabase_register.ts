@@ -2,7 +2,7 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import { Register_DTO_Request } from "../../../../../../../application/use_cases/users/register/register_DTO.js";
 import DB_Response from "../../../../parts/DB_Response.js";
 
-async function supabase_register<T>(params: Register_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
+async function supabase_register<T>(params: Omit<Register_DTO_Request, 'admin_username'>, supabase: SupabaseClient): Promise<DB_Response<T>> {
     let query;
     query = supabase
     .from('users')

@@ -1,3 +1,4 @@
+import { Get_Transfers_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import { Post_Transfer_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Get_Users_DTO_Request } from "../../../application/use_cases/users/get_users/get_users_DTO.js";
 import { Login_DTO_Request } from "../../../application/use_cases/users/login/login_DTO.js";
@@ -38,6 +39,7 @@ interface Validator {
     login(params: Login_DTO_Request): Validation_Result<Login_DTO_Request>;
     get_users(params: Get_Users_DTO_Request): Validation_Result<Get_Users_DTO_Request>;
     post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request>;
+    get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
 }
 
 export default Validator;
