@@ -42,6 +42,7 @@ interface Validator {
     post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request>;
     get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request>;
+    get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
 }
 
 export default Validator;

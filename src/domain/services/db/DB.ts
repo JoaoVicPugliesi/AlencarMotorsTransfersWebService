@@ -1,4 +1,5 @@
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
+import { Get_Transfer_DTO_Request } from "../../../application/use_cases/transfers/get_transfer/get_transfer_DTO.js";
 import { Get_Transfer_Users_DTO_Request, Get_Transfers_Param } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
@@ -9,6 +10,7 @@ interface DB {
     get_user<T>(params: Pick<User, 'username'>): Promise<DB_Response<T>>;
     get_users<T>(): Promise<DB_Response<T>>;
     register<T>(params: Omit<Register_DTO_Request, 'admin_username'>): Promise<DB_Response<T>>;
+    get_transfer<T>(params: Get_Transfer_DTO_Request): Promise<DB_Response<T>>;
     get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>>;
     post_transfer<T>(params: Omit<Post_Transfer_DTO_Request, 'participants'>): Promise<DB_Response<T>>;
     get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
