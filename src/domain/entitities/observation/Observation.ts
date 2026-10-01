@@ -2,7 +2,7 @@ import Observation_Status from "./Observation_Status.js";
 
 interface Observation {
     id: string,
-    transfe_id: string,
+    transfer_id: string,
     title: string,
     description: string,
     initial_date: unknown,
