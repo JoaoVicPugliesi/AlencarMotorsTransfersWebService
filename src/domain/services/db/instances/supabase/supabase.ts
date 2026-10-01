@@ -21,6 +21,10 @@ import { Post_Observation_DTO_Request } from "../../../../../application/use_cas
 import supabase_post_observation from "./use_cases/observations/supabase_post_observation.js";
 import { Get_Observation_DTO_Request } from "../../../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import supabase_get_observation from "./use_cases/observations/supabase_get_observation.js";
+import supabase_delete_transfer from "./use_cases/transfers/supabase_delete_transfer.js";
+import { Delete_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
+import { Delete_Observation_DTO_Request } from "../../../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
+import supabase_delete_observation from "./use_cases/observations/supabse_delete_observation.js";
 
 class Supabase implements DB {
     private supabase;
@@ -36,21 +40,26 @@ class Supabase implements DB {
     async get_users<T>(): Promise<DB_Response<T>> {
         return await supabase_get_users(this.supabase);
     }
-    async get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>> {
-        return await supabase_get_transfers (params, this.supabase)
-    }
+
     async get_transfer<T>(params: Get_Transfer_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_get_transfer(params, this.supabase)
+    }
+    async get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>> {
+        return await supabase_get_transfers (params, this.supabase)
     }
     async post_transfer<T>(params: Omit<Post_Transfer_DTO_Request, "participants">): Promise<DB_Response<T>> {
         return await supabase_post_transfer(params, this.supabase);
     }
-    async post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
-        return await supabase_post_transfer_users(params, this.supabase);
+    async delete_transfer<T>(params: Pick<Delete_Transfer_DTO_Request, 'transfer_id'>): Promise<DB_Response<T>> {
+        return await supabase_delete_transfer(params, this.supabase);
     }
     async get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_get_transfer_users(params, this.supabase);
     }
+    async post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_post_transfer_users(params, this.supabase);
+    }
+    
     async get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_get_observations(params, this.supabase);
     }
@@ -60,6 +69,10 @@ class Supabase implements DB {
     async get_observation<T>(params: Get_Observation_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_get_observation(params, this.supabase);
     }
+    async delete_observation<T>(params: Pick<Delete_Observation_DTO_Request, 'observation_id'>): Promise<DB_Response<T>> {
+        return await supabase_delete_observation(params, this.supabase);
+    }
+
 }
 
 export default Supabase;

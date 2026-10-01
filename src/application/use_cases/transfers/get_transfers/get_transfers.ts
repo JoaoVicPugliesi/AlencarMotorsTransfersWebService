@@ -6,11 +6,9 @@ import db_get_transfers from "../../../../infra/use_cases/transfers/db_get_trans
 import { Get_Transfers_DTO_Request, Get_Transfers_DTO_Response } from "./get_transfers_DTO.js";
 
 async function get_transfers(params: Get_Transfers_DTO_Request): Promise<Get_Transfers_DTO_Response> {
-    console.log(params);
     const transfer_users: DB_Response<Transfer_Users> = await db_get_transfer_users({
         id: params.id
     });
-    console.log(transfer_users);
     const { status: t_u_status, message: t_u_message, payload: t_u_payload } = transfer_users;
     
     if (!t_u_payload || !Array.isArray(t_u_payload)) {
@@ -30,9 +28,7 @@ async function get_transfers(params: Get_Transfers_DTO_Request): Promise<Get_Tra
         transfers_id: transfers_id
     });
     
-    console.log(transfers);
     const { status: t_status, message: t_message, payload: t_payload } = transfers;
-    console.log(t_payload);
     if (!t_status || !Array.isArray(t_payload)) {
         return {
             status: t_status,

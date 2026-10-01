@@ -7,7 +7,10 @@ import {
     SERVER_METHODS,
     SERVER_PORT
 } from "../../../../server/server_variables.js";
-import Server, { Crud_Operations, Request_Callback, Response_Callback } from "../Server.js";
+import Server from "../Server.js";
+import Crud_Operations from "../parts/Crud_Operations.js";
+import Request_Callback from "../parts/Request_Callback.js";
+import Response_Callback from "../parts/Response_Callback.js";
 
 class Fastify implements Server {
     private server = fastify();

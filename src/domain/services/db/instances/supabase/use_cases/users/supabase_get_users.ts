@@ -25,8 +25,6 @@ async function supabase_get_users<T>(supabase: SupabaseClient): Promise<DB_Respo
         }
     }
 
-    console.log(data);
-
     return {
         status: 200,
         message: 'Usuários encontrados',

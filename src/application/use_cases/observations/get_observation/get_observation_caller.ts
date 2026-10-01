@@ -11,7 +11,7 @@ async function get_observation_caller(req: Request_Callback<
 >, res: Response_Callback) {
     const params = req.query;
     const is_valid = validator.get_observation(params);
-
+    console.log(params);
     if (is_valid.success) {
         const response: Get_Observation_DTO_Response = await get_observation(params);
         res.status(response.status);
