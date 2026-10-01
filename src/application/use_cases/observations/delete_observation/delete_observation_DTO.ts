@@ -2,7 +2,7 @@ import Observation from "../../../../domain/entitities/observation/Observation.j
 import User from "../../../../domain/entitities/user/User.js";
 
 interface Delete_Observation_DTO_Request {
-    user_id: Pick<User, 'id'>;
+    username: string;
     password: Pick<User, 'password'>
     observation_id: Pick<Observation, 'id'>;
 }

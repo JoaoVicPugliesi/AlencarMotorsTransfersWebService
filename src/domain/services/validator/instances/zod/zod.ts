@@ -16,34 +16,42 @@ import { Post_Observation_DTO_Request } from "../../../../../application/use_cas
 import zod_post_observation from "./use_cases/observations/zod_post_observation.js";
 import { Get_Observation_DTO_Request } from "../../../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import zod_get_observation from "./use_cases/observations/zod_get_observation.js";
+import { Delete_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
+import zod_delete_transfer from "./use_cases/transfers/zod_delete_transfer.js";
 
 class Zod implements Validator {
-    register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request> {
-        return zod_register(params);
+
+    get_users(params: Get_Users_DTO_Request): Validation_Result<Get_Users_DTO_Request> {
+        return zod_get_users(params);
     }
     login(params: Login_DTO_Request): Validation_Result<Login_DTO_Request> {
         return zod_login(params);
     }
-    get_users(params: Get_Users_DTO_Request): Validation_Result<Get_Users_DTO_Request> {
-        return zod_get_users(params);
+    register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request> {
+        return zod_register(params);
     }
-    post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request> {
-        return zod_post_transfer(params);
+
+    get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
+        return zod_get_transfer(params);
     }
     get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
         return zod_get_transfers(params);
     }
+    post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request> {
+        return zod_post_transfer(params);
+    }
+    delete_transfer(params: Delete_Transfer_DTO_Request): Validation_Result<Delete_Transfer_DTO_Request> {
+        return zod_delete_transfer(params);
+    }
+
+    get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {
+        return zod_get_observation(params);
+    }
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request> {
         return zod_get_observations(params);
     }
-    get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
-        return zod_get_transfer(params);
-    }
     post_observation(params: Post_Observation_DTO_Request): Validation_Result<Post_Observation_DTO_Request> {
         return zod_post_observation(params);
-    }
-    get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {
-        return zod_get_observation(params);
     }
 }
 
