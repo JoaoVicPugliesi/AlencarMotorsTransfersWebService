@@ -14,6 +14,8 @@ import zod_get_observations from "./use_cases/observations/zod_get_observations.
 import zod_get_transfer from "./use_cases/transfers/zod_get_transfer.js";
 import { Post_Observation_DTO_Request } from "../../../../../application/use_cases/observations/post_observation/post_observation_DTO.js";
 import zod_post_observation from "./use_cases/observations/zod_post_observation.js";
+import { Get_Observation_DTO_Request } from "../../../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
+import zod_get_observation from "./use_cases/observations/zod_get_observation.js";
 
 class Zod implements Validator {
     register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request> {
@@ -39,6 +41,9 @@ class Zod implements Validator {
     }
     post_observation(params: Post_Observation_DTO_Request): Validation_Result<Post_Observation_DTO_Request> {
         return zod_post_observation(params);
+    }
+    get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {
+        return zod_get_observation(params);
     }
 }
 
