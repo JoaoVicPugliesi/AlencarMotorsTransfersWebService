@@ -19,7 +19,7 @@ async function supabase_delete_transfer (params: Pick<Delete_Transfer_DTO_Reques
     }
 
     return {
-        status: 201,
+        status: 200,
         message: 'Transferência Excluida',
         payload: null
     };

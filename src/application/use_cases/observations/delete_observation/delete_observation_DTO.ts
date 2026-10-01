@@ -1,10 +1,7 @@
-import Observation from "../../../../domain/entitities/observation/Observation.js";
-import User from "../../../../domain/entitities/user/User.js";
-
 interface Delete_Observation_DTO_Request {
     username: string;
-    password: Pick<User, 'password'>
-    observation_id: Pick<Observation, 'id'>;
+    password: string;
+    observation_id: string;
 }
 
 interface Delete_Observation_DTO_Response {

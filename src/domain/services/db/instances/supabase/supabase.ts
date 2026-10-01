@@ -24,7 +24,7 @@ import supabase_get_observation from "./use_cases/observations/supabase_get_obse
 import supabase_delete_transfer from "./use_cases/transfers/supabase_delete_transfer.js";
 import { Delete_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
-import supabase_delete_observation from "./use_cases/observations/supabse_delete_observation.js";
+import supabase_delete_observation from "./use_cases/observations/supabase_delete_observation.js";
 
 class Supabase implements DB {
     private supabase;
