@@ -22,6 +22,10 @@ import { Delete_Observation_DTO_Request } from "../../../../../application/use_c
 import zod_delete_observation from "./use_cases/observations/zod_delete_observation.js";
 import { Conclude_Observation_DTO_Request } from "../../../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
 import zod_conclude_observation from "./use_cases/observations/zod_conclude_observation.js";
+import { Conclude_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
+import zod_conclude_transfer from "./use_cases/transfers/zod_conclude_transfer.js";
+import { Reactivate_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
+import zod_reactivate_transfer from "./use_cases/transfers/zod_reactivate_transfer.js";
 
 class Zod implements Validator {
 
@@ -35,6 +39,7 @@ class Zod implements Validator {
         return zod_register(params);
     }
 
+
     get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
         return zod_get_transfer(params);
     }
@@ -46,6 +51,12 @@ class Zod implements Validator {
     }
     delete_transfer(params: Delete_Transfer_DTO_Request): Validation_Result<Delete_Transfer_DTO_Request> {
         return zod_delete_transfer(params);
+    }
+    conclude_transfer(params: Conclude_Transfer_DTO_Request): Validation_Result<Conclude_Transfer_DTO_Request> {
+        return zod_conclude_transfer(params);
+    }
+    reactivate_transfer(params: Reactivate_Transfer_DTO_Request): Validation_Result<Reactivate_Transfer_DTO_Request> {
+        return zod_reactivate_transfer(params);
     }
 
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {

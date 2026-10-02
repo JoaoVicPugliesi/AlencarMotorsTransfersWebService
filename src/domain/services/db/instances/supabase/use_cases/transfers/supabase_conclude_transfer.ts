@@ -3,6 +3,7 @@ import DB_Response from "../../../../parts/DB_Response.js";
 import { Conclude_Transfer_DTO_Request } from "../../../../../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 
 async function supabase_conclude_transfer<T>(params: Conclude_Transfer_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
+    console.log(params);
     let query;
     query = supabase
     .from('transfers')
@@ -17,6 +18,7 @@ async function supabase_conclude_transfer<T>(params: Conclude_Transfer_DTO_Reque
 
     const { data, error } = await query;
 
+    console.log(data);
     if(error) {
         return {
             status: 400,
