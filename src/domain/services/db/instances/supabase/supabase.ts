@@ -33,6 +33,8 @@ import { Reactivate_Transfer_DTO_Request } from "../../../../../application/use_
 import supabase_reactivate_transfer from "./use_cases/transfers/supabase_reactivate_transfer.js";
 import { Reactivate_Observation_DTO_Request } from "../../../../../application/use_cases/observations/reactivate_observation/reactivate_observation_DTO.js";
 import supabase_reactivate_observation from "./use_cases/observations/supabase_reactivate_observation.js";
+import { Update_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
+import supabase_update_transfer from "./use_cases/transfers/supabase_update_transfer.js";
 
 class Supabase implements DB {
     private supabase;
@@ -72,6 +74,9 @@ class Supabase implements DB {
     }
     async reactivate_transfer<T>(params: Reactivate_Transfer_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_reactivate_transfer(params, this.supabase);
+    }
+    async update_transfer<T>(params: Update_Transfer_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_update_transfer(params, this.supabase);
     }
     
     async get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>> {

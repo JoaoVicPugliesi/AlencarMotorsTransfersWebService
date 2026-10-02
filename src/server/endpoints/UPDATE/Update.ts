@@ -2,6 +2,7 @@ import conclude_observation_caller from "../../../application/use_cases/observat
 import reactivate_observation_caller from "../../../application/use_cases/observations/reactivate_observation/reactivate_observation_caller.js";
 import conclude_transfer_caller from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_caller.js";
 import reactivate_transfer_caller from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_caller.js";
+import update_transfer_caller from "../../../application/use_cases/transfers/update_transfer/update_transfer_caller.js";
 import Server from "../../../domain/services/server/Server.js";
 
 class Update {
@@ -27,6 +28,10 @@ class Update {
             url: '/reactivate_transfer',
             callback: reactivate_transfer_caller
        });
+       this.server.update({
+          url: '/update_transfer',
+          callback: update_transfer_caller
+       })
     }
 }
 
