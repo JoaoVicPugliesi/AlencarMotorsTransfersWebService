@@ -31,6 +31,8 @@ import { Conclude_Transfer_DTO_Request } from "../../../../../application/use_ca
 import supabase_conclude_transfer from "./use_cases/transfers/supabase_conclude_transfer.js";
 import { Reactivate_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import supabase_reactivate_transfer from "./use_cases/transfers/supabase_reactivate_transfer.js";
+import { Reactivate_Observation_DTO_Request } from "../../../../../application/use_cases/observations/reactivate_observation/reactivate_observation_DTO.js";
+import supabase_reactivate_observation from "./use_cases/observations/supabase_reactivate_observation.js";
 
 class Supabase implements DB {
     private supabase;
@@ -86,6 +88,9 @@ class Supabase implements DB {
     }
     async conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_conclude_observation(params, this.supabase);
+    }
+    async reactivate_observation<T>(params: Reactivate_Observation_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_reactivate_observation(params, this.supabase);
     }
 
 }

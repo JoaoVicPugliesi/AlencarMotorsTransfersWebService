@@ -26,6 +26,8 @@ import { Conclude_Transfer_DTO_Request } from "../../../../../application/use_ca
 import zod_conclude_transfer from "./use_cases/transfers/zod_conclude_transfer.js";
 import { Reactivate_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import zod_reactivate_transfer from "./use_cases/transfers/zod_reactivate_transfer.js";
+import { Reactivate_Observation_DTO_Request } from "../../../../../application/use_cases/observations/reactivate_observation/reactivate_observation_DTO.js";
+import zod_reactivate_observation from "./use_cases/observations/zod_reactivate_observation.js";
 
 class Zod implements Validator {
 
@@ -73,6 +75,9 @@ class Zod implements Validator {
     }
     conclude_observation(params: Conclude_Observation_DTO_Request): Validation_Result<Conclude_Observation_DTO_Request> {
         return zod_conclude_observation(params);
+    }
+    reactivate_observation(params: Reactivate_Observation_DTO_Request): Validation_Result<Reactivate_Observation_DTO_Request> {
+        return zod_reactivate_observation(params);
     }
 }
 

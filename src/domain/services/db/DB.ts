@@ -3,6 +3,7 @@ import { Delete_Observation_DTO_Request } from "../../../application/use_cases/o
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
 import { Post_Observation_DTO_Request } from "../../../application/use_cases/observations/post_observation/post_observation_DTO.js";
+import { Reactivate_Observation_DTO_Request } from "../../../application/use_cases/observations/reactivate_observation/reactivate_observation_DTO.js";
 import { Conclude_Transfer_DTO_Request } from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Get_Transfer_DTO_Request } from "../../../application/use_cases/transfers/get_transfer/get_transfer_DTO.js";
@@ -32,6 +33,7 @@ interface DB {
     post_observation<T>(params: Post_Observation_DTO_Request): Promise<DB_Response<T>>;
     delete_observation<T>(params: Pick<Delete_Observation_DTO_Request, 'observation_id'>): Promise<DB_Response<T>>;
     conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>>
+    reactivate_observation<T>(params: Reactivate_Observation_DTO_Request): Promise<DB_Response<T>>
 }
 
 export default DB;
