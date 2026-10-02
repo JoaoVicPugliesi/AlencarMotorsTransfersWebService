@@ -32,6 +32,8 @@ import { Update_Transfer_DTO_Request } from "../../../../../application/use_case
 import zod_update_transfer from "./use_cases/transfers/zod_update_transfer.js";
 import { Update_Observation_DTO_Request } from "../../../../../application/use_cases/observations/update_observation/update_observation_DTO.js";
 import zod_update_observation from "./use_cases/observations/zod_update_observation.js";
+import { Update_Profile_DTO_Request } from "../../../../../application/use_cases/users/update_profile/update_profile_DTO.js";
+import zod_update_profile from "./use_cases/users/zod_update_profile.js";
 
 class Zod implements Validator {
 
@@ -44,7 +46,9 @@ class Zod implements Validator {
     register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request> {
         return zod_register(params);
     }
-
+    update_profile(params: Update_Profile_DTO_Request): Validation_Result<Update_Profile_DTO_Request> {
+        return zod_update_profile(params);
+    }
 
     get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request> {
         return zod_get_transfer(params);

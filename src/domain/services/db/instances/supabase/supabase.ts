@@ -37,6 +37,8 @@ import { Update_Transfer_DTO_Request } from "../../../../../application/use_case
 import supabase_update_transfer from "./use_cases/transfers/supabase_update_transfer.js";
 import { Update_Observation_DTO_Request } from "../../../../../application/use_cases/observations/update_observation/update_observation_DTO.js";
 import supabase_update_observation from "./use_cases/observations/supabase_update_observation.js";
+import { Update_Profile_DTO_Request } from "../../../../../application/use_cases/users/update_profile/update_profile_DTO.js";
+import supabase_update_profile from "./use_cases/users/supabase_update_profile.js";
 
 class Supabase implements DB {
     private supabase;
@@ -51,6 +53,9 @@ class Supabase implements DB {
     }
     async get_users<T>(): Promise<DB_Response<T>> {
         return await supabase_get_users(this.supabase);
+    }
+    async update_profile<T>(params: Update_Profile_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_update_profile(params, this.supabase);
     }
 
     async get_transfer<T>(params: Get_Transfer_DTO_Request): Promise<DB_Response<T>> {

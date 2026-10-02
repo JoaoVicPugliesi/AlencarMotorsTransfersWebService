@@ -5,7 +5,7 @@ import { title } from "node:process";
 async function supabase_update_observation (params: Update_Observation_DTO_Request, supabase: SupabaseClient) {
     let query;
     query = supabase
-    .from('transfers')
+    .from('observations')
     .update({
         title: params.title,
         description: params.description

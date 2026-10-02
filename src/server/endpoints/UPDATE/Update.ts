@@ -1,8 +1,10 @@
 import conclude_observation_caller from "../../../application/use_cases/observations/conclude_observation/conclude_observation_caller.js";
 import reactivate_observation_caller from "../../../application/use_cases/observations/reactivate_observation/reactivate_observation_caller.js";
+import update_observation_caller from "../../../application/use_cases/observations/update_observation/update_observation_caller.js";
 import conclude_transfer_caller from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_caller.js";
 import reactivate_transfer_caller from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_caller.js";
 import update_transfer_caller from "../../../application/use_cases/transfers/update_transfer/update_transfer_caller.js";
+import update_profile_caller from "../../../application/use_cases/users/update_profile/update_profile_caller.js";
 import Server from "../../../domain/services/server/Server.js";
 
 class Update {
@@ -12,6 +14,10 @@ class Update {
           this.server = server;
      }
      async run() {
+          this.server.update({
+               url: '/update_profile',
+               callback: update_profile_caller
+          })
           this.server.update({
                url: '/conclude_observation',
                callback: conclude_observation_caller
@@ -32,6 +38,10 @@ class Update {
                url: '/reactivate_transfer',
                callback: reactivate_transfer_caller
           });
+          this.server.update({
+               url: '/update_observation',
+               callback: update_observation_caller
+          })
      }
 }
 

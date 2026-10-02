@@ -13,6 +13,7 @@ import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../.
 import { Reactivate_Transfer_DTO_Request } from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import { Update_Transfer_DTO_Request } from "../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
+import { Update_Profile_DTO_Request } from "../../../application/use_cases/users/update_profile/update_profile_DTO.js";
 import User from "../../entitities/user/User.js";
 import DB_Response from "./parts/DB_Response.js";
 
@@ -20,6 +21,7 @@ interface DB {
     get_user<T>(params: Pick<User, 'username'>): Promise<DB_Response<T>>;
     get_users<T>(): Promise<DB_Response<T>>;
     register<T>(params: Omit<Register_DTO_Request, 'admin_username'>): Promise<DB_Response<T>>;
+    update_profile<T>(params: Update_Profile_DTO_Request): Promise<DB_Response<T>>
     
     get_transfer<T>(params: Get_Transfer_DTO_Request): Promise<DB_Response<T>>;
     get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>>;

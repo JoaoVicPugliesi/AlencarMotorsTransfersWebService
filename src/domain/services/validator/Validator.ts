@@ -11,6 +11,7 @@ import { Get_Transfers_DTO_Request } from "../../../application/use_cases/transf
 import { Post_Transfer_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Reactivate_Transfer_DTO_Request } from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import { Update_Transfer_DTO_Request } from "../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
+import { Update_Profile_DTO_Request } from "../../../application/use_cases/users/update_profile/update_profile_DTO.js";
 import { Get_Users_DTO_Request } from "../../../application/use_cases/users/get_users/get_users_DTO.js";
 import { Login_DTO_Request } from "../../../application/use_cases/users/login/login_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
@@ -49,6 +50,7 @@ interface Validator {
     get_users(params: Get_Users_DTO_Request): Validation_Result<Get_Users_DTO_Request>;
     login(params: Login_DTO_Request): Validation_Result<Login_DTO_Request>;
     register(params: Register_DTO_Request): Validation_Result<Register_DTO_Request>;
+    update_profile(params: Update_Profile_DTO_Request): Validation_Result<Update_Profile_DTO_Request>;
 
     get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
     get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
