@@ -4,6 +4,7 @@ import { Get_Observation_DTO_Request } from "../../../application/use_cases/obse
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
 import { Post_Observation_DTO_Request } from "../../../application/use_cases/observations/post_observation/post_observation_DTO.js";
 import { Reactivate_Observation_DTO_Request } from "../../../application/use_cases/observations/reactivate_observation/reactivate_observation_DTO.js";
+import { Update_Observation_DTO_Request } from "../../../application/use_cases/observations/update_observation/update_observation_DTO.js";
 import { Conclude_Transfer_DTO_Request } from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Get_Transfers_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
@@ -63,6 +64,7 @@ interface Validator {
     delete_observation(params: Delete_Observation_DTO_Request): Validation_Result<Delete_Observation_DTO_Request>;
     conclude_observation(params: Conclude_Observation_DTO_Request): Validation_Result<Conclude_Observation_DTO_Request>;
     reactivate_observation(params: Reactivate_Observation_DTO_Request): Validation_Result<Reactivate_Observation_DTO_Request>;
+    update_observation(params: Update_Observation_DTO_Request): Validation_Result<Update_Observation_DTO_Request>;
 }
 
 export default Validator;

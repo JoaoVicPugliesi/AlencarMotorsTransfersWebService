@@ -6,33 +6,33 @@ import update_transfer_caller from "../../../application/use_cases/transfers/upd
 import Server from "../../../domain/services/server/Server.js";
 
 class Update {
-    private server;
+     private server;
 
-    constructor (server: Server) {
-        this.server = server;
-    }
-    async run () {
-       this.server.update({
-            url: '/conclude_observation',
-            callback: conclude_observation_caller
-       });
-       this.server.update({
-            url: '/reactivate_observation',
-            callback: reactivate_observation_caller
-       });
-       this.server.update({
-            url: '/conclude_transfer',
-            callback: conclude_transfer_caller
-       });
-       this.server.update({
-            url: '/reactivate_transfer',
-            callback: reactivate_transfer_caller
-       });
-       this.server.update({
-          url: '/update_transfer',
-          callback: update_transfer_caller
-       })
-    }
+     constructor(server: Server) {
+          this.server = server;
+     }
+     async run() {
+          this.server.update({
+               url: '/conclude_observation',
+               callback: conclude_observation_caller
+          });
+          this.server.update({
+               url: '/reactivate_observation',
+               callback: reactivate_observation_caller
+          });
+          this.server.update({
+               url: '/update_transfer',
+               callback: update_transfer_caller
+          })
+          this.server.update({
+               url: '/conclude_transfer',
+               callback: conclude_transfer_caller
+          });
+          this.server.update({
+               url: '/reactivate_transfer',
+               callback: reactivate_transfer_caller
+          });
+     }
 }
 
 export default Update;

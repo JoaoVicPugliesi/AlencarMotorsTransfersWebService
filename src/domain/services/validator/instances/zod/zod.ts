@@ -30,6 +30,8 @@ import { Reactivate_Observation_DTO_Request } from "../../../../../application/u
 import zod_reactivate_observation from "./use_cases/observations/zod_reactivate_observation.js";
 import { Update_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
 import zod_update_transfer from "./use_cases/transfers/zod_update_transfer.js";
+import { Update_Observation_DTO_Request } from "../../../../../application/use_cases/observations/update_observation/update_observation_DTO.js";
+import zod_update_observation from "./use_cases/observations/zod_update_observation.js";
 
 class Zod implements Validator {
 
@@ -65,7 +67,7 @@ class Zod implements Validator {
     update_transfer(params: Update_Transfer_DTO_Request): Validation_Result<Update_Transfer_DTO_Request> {
         return zod_update_transfer(params);
     }
-
+    
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {
         return zod_get_observation(params);
     }
@@ -83,6 +85,9 @@ class Zod implements Validator {
     }
     reactivate_observation(params: Reactivate_Observation_DTO_Request): Validation_Result<Reactivate_Observation_DTO_Request> {
         return zod_reactivate_observation(params);
+    }
+    update_observation(params: Update_Observation_DTO_Request): Validation_Result<Update_Observation_DTO_Request> {
+        return zod_update_observation(params);
     }
 }
 
