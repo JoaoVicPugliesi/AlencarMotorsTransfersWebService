@@ -1,9 +1,9 @@
 import z from "zod";
 import zod_validation_handler from "../../helpers/zod_validation_handler.js";
-import { Conclude_Observation_DTO_Request } from "../../../../../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
+import { Conclude_Transfer_DTO_Request } from "../../../../../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 
-function zod_conclude_observation(
-    params: Conclude_Observation_DTO_Request,
+function zod_conclude_transfer(
+    params: Conclude_Transfer_DTO_Request,
     zod = z
 ) {
     const schema = zod.object({
@@ -19,4 +19,4 @@ function zod_conclude_observation(
     return zod_validation_handler(is_valid);
 }
 
-export default zod_conclude_observation;
+export default zod_conclude_transfer;

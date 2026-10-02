@@ -1,13 +1,14 @@
-import Observation from "../../../../domain/entitities/observation/Observation.js";
+import Transfer from "../../../../domain/entitities/transfer/Transfer.js";
 import User from "../../../../domain/entitities/user/User.js";
 import DB_Response from "../../../../domain/services/db/parts/DB_Response.js";
 import Hash_Error_Response from "../../../../domain/services/hash/parts/Hash_Error_Response.js";
-import db_conclude_observation from "../../../../infra/use_cases/observations/db_conclude_observation.js";
+import db_get_observations from "../../../../infra/use_cases/observations/db_get_observations.js";
+import db_conclude_transfer from "../../../../infra/use_cases/transfers/db_conclude_transfer.js";
 import db_get_user from "../../../../infra/use_cases/users/db_get_user.js";
 import hash from "../../../services/hash/hash.js";
-import { Conclude_Observation_DTO_Request, Conclude_Observation_DTO_Response } from "./conclude_observation_DTO.js";
+import { Conclude_Transfer_DTO_Request, Conclude_Transfer_DTO_Response } from "./conclude_transfer_DTO.js";
 
-async function conclude_observation (params: Conclude_Observation_DTO_Request): Promise<Conclude_Observation_DTO_Response> {
+async function conclude_transfer (params: Conclude_Transfer_DTO_Request): Promise<Conclude_Transfer_DTO_Response> {
     const { status: u_status, message: u_message, payload: u_payload }: DB_Response<User> = await db_get_user({
         username: params.username
     });
@@ -16,7 +17,7 @@ async function conclude_observation (params: Conclude_Observation_DTO_Request): 
             status: u_status,
             json: {
                 message: u_message,
-                observation: null
+                transfer: null
             }
         }
     }
@@ -30,18 +31,39 @@ async function conclude_observation (params: Conclude_Observation_DTO_Request): 
             status: verified_password.status,
             json: {
                 message: verified_password.message,
-                observation: null
+                transfer: null
             }
         }
     }
-    const concluded: DB_Response<Observation> = await db_conclude_observation(params);
+    const { payload: ob_payload } = await db_get_observations({
+        id: params.id
+    });
+    let are_concluded: boolean = true;
+    if(ob_payload && Array.isArray(ob_payload)) {
+        ob_payload.forEach((o) => {
+            if(o.status === 'pending') {
+                are_concluded = false;
+            }
+        });
+    }
+
+    if(!are_concluded) {
+        return {
+            status: 400,
+            json: {
+                message: 'Todas as observações precisam estar concluídas',
+                transfer: null
+            }
+        }
+    }
+    const concluded: DB_Response<Transfer> = await db_conclude_transfer(params);
     const { status: c_status, message: c_message, payload: c_payload } = concluded;
     if(c_status !== 200 || !c_payload || Array.isArray(c_payload)) {
         return {
             status: c_status,
             json: {
                 message: c_message,
-                observation: null
+                transfer: null
             }
         }
     }
@@ -50,9 +72,9 @@ async function conclude_observation (params: Conclude_Observation_DTO_Request): 
         status: c_status,
         json: {
             message: c_message,
-            observation: c_payload
+            transfer: c_payload
         }
     }
 }
 
-export default conclude_observation;
+export default conclude_transfer;

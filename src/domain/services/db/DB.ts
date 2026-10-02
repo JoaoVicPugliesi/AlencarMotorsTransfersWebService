@@ -3,6 +3,7 @@ import { Delete_Observation_DTO_Request } from "../../../application/use_cases/o
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
 import { Post_Observation_DTO_Request } from "../../../application/use_cases/observations/post_observation/post_observation_DTO.js";
+import { Conclude_Transfer_DTO_Request } from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Get_Transfer_DTO_Request } from "../../../application/use_cases/transfers/get_transfer/get_transfer_DTO.js";
 import { Get_Transfer_Users_DTO_Request, Get_Transfers_Param } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
@@ -22,6 +23,7 @@ interface DB {
     delete_transfer<T>(params: Pick<Delete_Transfer_DTO_Request, 'transfer_id'>): Promise<DB_Response<T>>;
     get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
     post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
+    conclude_transfer<T>(params: Conclude_Transfer_DTO_Request): Promise<DB_Response<T>>
     
     get_observation<T>(params: Get_Observation_DTO_Request): Promise<DB_Response<T>>;
     get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>>;

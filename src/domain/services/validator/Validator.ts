@@ -3,6 +3,7 @@ import { Delete_Observation_DTO_Request } from "../../../application/use_cases/o
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
 import { Post_Observation_DTO_Request } from "../../../application/use_cases/observations/post_observation/post_observation_DTO.js";
+import { Conclude_Transfer_DTO_Request } from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Get_Transfers_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import { Post_Transfer_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
@@ -49,6 +50,7 @@ interface Validator {
     get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
     post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request>;
     delete_transfer(params: Delete_Transfer_DTO_Request): Validation_Result<Delete_Transfer_DTO_Request>;
+    conclude_transfer(params: Conclude_Transfer_DTO_Request): Validation_Result<Conclude_Transfer_DTO_Request>;
     
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request>;
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request>;
