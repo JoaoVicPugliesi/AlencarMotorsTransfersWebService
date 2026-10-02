@@ -19,8 +19,8 @@ async function supabase_delete_observation (params: Pick<Delete_Observation_DTO_
     }
 
     return {
-        status: 201,
-        message: 'Transferência Excluida',
+        status: 200,
+        message: 'Observação Excluida',
         payload: null
     };
 }

@@ -35,7 +35,7 @@ function zod_post_transfer(
 
         term_date: zod.iso.datetime({
             local: true,
-            error: "A data de término deve ser um timestamp válido"
+            error: "O prazo deve ser um timestamp válido"
         }),
         created_by: zod
             .string(),

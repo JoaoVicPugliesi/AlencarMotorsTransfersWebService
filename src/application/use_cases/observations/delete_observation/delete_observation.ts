@@ -32,23 +32,23 @@ async function delete_observation(params: Delete_Observation_DTO_Request): Promi
         }
     }
 
-    const { status: d_status, message: d_message }= await db_delete_observation({
+    const { status: ob_status, message: ob_message }= await db_delete_observation({
         observation_id: params.observation_id
     });
 
-    if(d_status !== 200) {
+    if(ob_status !== 200) {
         return {
-            status: d_status,
+            status: ob_status,
             json: {
-                message: d_message
+                message: ob_message
             }
         }
     }
 
     return {
-        status: d_status,
+        status: ob_status,
         json: {
-            message: d_message
+            message: ob_message
         }
     }
 }

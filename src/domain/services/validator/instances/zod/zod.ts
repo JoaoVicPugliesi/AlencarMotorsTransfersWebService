@@ -18,6 +18,10 @@ import { Get_Observation_DTO_Request } from "../../../../../application/use_case
 import zod_get_observation from "./use_cases/observations/zod_get_observation.js";
 import { Delete_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import zod_delete_transfer from "./use_cases/transfers/zod_delete_transfer.js";
+import { Delete_Observation_DTO_Request } from "../../../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
+import zod_delete_observation from "./use_cases/observations/zod_delete_observation.js";
+import { Conclude_Observation_DTO_Request } from "../../../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
+import zod_conclude_observation from "./use_cases/observations/zod_conclude_observation.js";
 
 class Zod implements Validator {
 
@@ -52,6 +56,12 @@ class Zod implements Validator {
     }
     post_observation(params: Post_Observation_DTO_Request): Validation_Result<Post_Observation_DTO_Request> {
         return zod_post_observation(params);
+    }
+    delete_observation(params: Delete_Observation_DTO_Request): Validation_Result<Delete_Observation_DTO_Request> {
+        return zod_delete_observation(params);
+    }
+    conclude_observation(params: Conclude_Observation_DTO_Request): Validation_Result<Conclude_Observation_DTO_Request> {
+        return zod_conclude_observation(params);
     }
 }
 

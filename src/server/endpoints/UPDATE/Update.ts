@@ -1,3 +1,4 @@
+import conclude_observation_caller from "../../../application/use_cases/observations/conclude_observation/conclude_observation_caller.js";
 import Server from "../../../domain/services/server/Server.js";
 
 class Update {
@@ -7,7 +8,10 @@ class Update {
         this.server = server;
     }
     async run () {
-       
+       this.server.update({
+            url: '/conclude_observation',
+            callback: conclude_observation_caller
+       })
     }
 }
 

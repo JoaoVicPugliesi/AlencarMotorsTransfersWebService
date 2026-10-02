@@ -25,6 +25,8 @@ import supabase_delete_transfer from "./use_cases/transfers/supabase_delete_tran
 import { Delete_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
 import supabase_delete_observation from "./use_cases/observations/supabase_delete_observation.js";
+import { Conclude_Observation_DTO_Request } from "../../../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
+import supabase_conclude_observation from "./use_cases/observations/supabase_conclude_observation.js";
 
 class Supabase implements DB {
     private supabase;
@@ -71,6 +73,9 @@ class Supabase implements DB {
     }
     async delete_observation<T>(params: Pick<Delete_Observation_DTO_Request, 'observation_id'>): Promise<DB_Response<T>> {
         return await supabase_delete_observation(params, this.supabase);
+    }
+    async conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_conclude_observation(params, this.supabase);
     }
 
 }

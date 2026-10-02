@@ -1,3 +1,4 @@
+import { Conclude_Observation_DTO_Request } from "../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
@@ -26,6 +27,7 @@ interface DB {
     get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>>;
     post_observation<T>(params: Post_Observation_DTO_Request): Promise<DB_Response<T>>;
     delete_observation<T>(params: Pick<Delete_Observation_DTO_Request, 'observation_id'>): Promise<DB_Response<T>>;
+    conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>>
 }
 
 export default DB;

@@ -1,3 +1,4 @@
+import { Conclude_Observation_DTO_Request } from "../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
 import { Get_Observations_DTO_Request } from "../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
@@ -53,6 +54,7 @@ interface Validator {
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request>;
     post_observation(params: Post_Observation_DTO_Request): Validation_Result<Post_Observation_DTO_Request>;
     delete_observation(params: Delete_Observation_DTO_Request): Validation_Result<Delete_Observation_DTO_Request>;
+    conclude_observation(params: Conclude_Observation_DTO_Request): Validation_Result<Conclude_Observation_DTO_Request>;
 }
 
 export default Validator;
