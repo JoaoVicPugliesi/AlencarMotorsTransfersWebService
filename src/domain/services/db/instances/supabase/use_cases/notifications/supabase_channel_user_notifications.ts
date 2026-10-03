@@ -21,6 +21,7 @@ async function supabase_channel_user_notifications(
             }
         )
         .subscribe((status, error) => {
+            console.log(status);
             if (error) return null;
         });
 

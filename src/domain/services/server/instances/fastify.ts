@@ -61,7 +61,12 @@ class Fastify implements Server {
 
                 json(data: unknown) {
                     response.send(data);
-                }
+                },
+                hijack() {
+                response.hijack();
+                },
+
+                raw: response.raw
             };
 
             await params.callback(req, res);

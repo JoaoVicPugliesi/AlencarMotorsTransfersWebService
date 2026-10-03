@@ -9,7 +9,6 @@ async function supabase_get_transfer_users<T>(params: Get_Transfer_Users_DTO_Req
         .select('*')
         .eq('user_id', params.id)
     const { data, error } = await query;
-    console.log(data, error);
     if (error) {
         return {
             status: 400,

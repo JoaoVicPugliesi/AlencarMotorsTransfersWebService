@@ -12,7 +12,6 @@ async function channel_user_notifications(
         params,
         on_notification
     );
-
     if(!channel) return null;
     return channel;
 }

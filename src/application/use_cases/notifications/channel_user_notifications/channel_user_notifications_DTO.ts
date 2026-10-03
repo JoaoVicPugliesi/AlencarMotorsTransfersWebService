@@ -1,5 +1,5 @@
 interface Channel_User_Notifications_DTO_Request {
-    id: number
+    id: string
 }
 
 export { Channel_User_Notifications_DTO_Request }
