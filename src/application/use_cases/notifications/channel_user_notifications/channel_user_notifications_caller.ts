@@ -19,14 +19,13 @@ async function channel_user_notifications_caller(
         'Connection': 'keep-alive',
         'Access-Control-Allow-Origin': '*'
     });
-    res.raw.write('Connected');
     const channel = await channel_user_notifications(
         params,
         (payload) => {
+            console.log(payload);
             res.raw.write(`data: ${JSON.stringify(payload)}\n\n`);
         }
     );
-    console.log(channel);
     if(!channel) return;
     res.raw.on('close', async () => { await channel.unsubscribe(); });
 }

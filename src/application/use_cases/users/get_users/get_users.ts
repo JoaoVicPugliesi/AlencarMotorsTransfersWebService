@@ -6,7 +6,6 @@ import Is_Authorized_Response from "../../../helpers/is_authorized/is_authorized
 import { Get_Users_DTO_Request, Get_Users_DTO_Response } from "./get_users_DTO.js";
 
 async function get_users(params: Get_Users_DTO_Request): Promise<Get_Users_DTO_Response> {
-    console.log(params);
     const is_auth: Is_Authorized_Response = await is_authorized(params.username);
     if(!is_auth.is_authorized) {
         return {

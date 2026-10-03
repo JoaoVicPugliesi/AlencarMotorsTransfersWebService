@@ -1,4 +1,5 @@
 import channel_user_notifications_caller from "../../../application/use_cases/notifications/channel_user_notifications/channel_user_notifications_caller.js";
+import get_notifications_caller from "../../../application/use_cases/notifications/get_notifications/get_notifications_caller.js";
 import get_observation_caller from "../../../application/use_cases/observations/get_observation/get_observation_caller.js";
 import get_observations_caller from "../../../application/use_cases/observations/get_observations/get_observations_caller.js";
 import get_transfer_caller from "../../../application/use_cases/transfers/get_transfer/get_transfer_caller.js";
@@ -35,6 +36,10 @@ class Get {
        this.server.get({
         url: '/channel_user_notifications',
         callback: channel_user_notifications_caller
+       })
+       this.server.get({
+        url: '/get_notifications',
+        callback: get_notifications_caller
        })
     }
 }

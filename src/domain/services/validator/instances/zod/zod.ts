@@ -34,6 +34,8 @@ import { Update_Observation_DTO_Request } from "../../../../../application/use_c
 import zod_update_observation from "./use_cases/observations/zod_update_observation.js";
 import { Update_Profile_DTO_Request } from "../../../../../application/use_cases/users/update_profile/update_profile_DTO.js";
 import zod_update_profile from "./use_cases/users/zod_update_profile.js";
+import { Post_User_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
+import zod_post_user_notifications from "./use_cases/notifications/zod_post_user_notifications.js";
 
 class Zod implements Validator {
 
@@ -92,6 +94,10 @@ class Zod implements Validator {
     }
     update_observation(params: Update_Observation_DTO_Request): Validation_Result<Update_Observation_DTO_Request> {
         return zod_update_observation(params);
+    }
+
+    post_user_notifications(params: Post_User_Notifications_DTO_Request): Validation_Result<Post_User_Notifications_DTO_Request> {
+        return zod_post_user_notifications(params);
     }
 }
 

@@ -1,5 +1,6 @@
 import { Channel_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/channel_user_notifications/channel_user_notifications_DTO.js";
 import { Get_Notifications_DTO_Request } from "../../../application/use_cases/notifications/get_notifications/get_notifications_DTO.js";
+import { Post_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
 import { Conclude_Observation_DTO_Request } from "../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
@@ -45,8 +46,9 @@ interface DB {
     reactivate_observation<T>(params: Reactivate_Observation_DTO_Request): Promise<DB_Response<T>>
     update_observation<T>(params: Update_Observation_DTO_Request): Promise<DB_Response<T>>
 
-    get_notifications<T>(params: Get_Notifications_DTO_Request): Promise<Formatted_Notification[] | Formatted_Notification | null>
+    get_notifications(params: Get_Notifications_DTO_Request): Promise<Formatted_Notification[] | Formatted_Notification | null>
     channel_user_notifications(params: Channel_User_Notifications_DTO_Request,  on_notification: (notification: unknown) => void): Promise<Channel | null>
+    post_user_notifications<T>(params: Post_User_Notifications_DTO_Request): Promise<DB_Response<T>>
 }
 
 export default DB;

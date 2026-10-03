@@ -13,6 +13,7 @@ async function get_notifications_caller(
 ) {
     const params = req.query;
 
+    if(params.notification_id === 'null') params.notification_id = null;
     if(params.unique === 'true') params.unique = true;
     if(params.unique === 'false') params.unique = false;
     const { status, json } = await get_notifications(params);

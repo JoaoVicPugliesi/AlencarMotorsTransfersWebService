@@ -4,7 +4,6 @@ import { Get_Notifications_DTO_Request, Get_Notifications_DTO_Response } from ".
 
 async function get_notifications(params: Get_Notifications_DTO_Request): Promise<Get_Notifications_DTO_Response> {
     const response: Formatted_Notification[] | Formatted_Notification | null = await db_get_notifications(params);
-    console.log(response);
     if (!response) {
         return {
             status: 500,

@@ -1,8 +1,8 @@
 import Formatted_Notification from "../../../../domain/entitities/notification/Formatted_Notification.js";
 
 interface Get_Notifications_DTO_Request {
-    transfer_id: string,
     user_id: string,
+    notification_id: string | null,
     unique: boolean | string
 }
 
