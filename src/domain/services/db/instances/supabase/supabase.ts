@@ -42,6 +42,9 @@ import supabase_update_profile from "./use_cases/users/supabase_update_profile.j
 import { Channel_User_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/channel_user_notifications/channel_user_notifications_DTO.js";
 import supabase_channel_user_notifications from "./use_cases/notifications/supabase_channel_user_notifications.js";
 import Channel from "../../parts/Channel.js";
+import { Get_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/get_notifications/get_notifications_DTO.js";
+import Formatted_Notification from "../../../../entitities/notification/Formatted_Notification.js";
+import supabase_get_notifications from "./use_cases/notifications/supabase_get_notifications.js";
 
 class Supabase implements DB {
     private supabase;
@@ -111,8 +114,11 @@ class Supabase implements DB {
         return await supabase_update_observation(params, this.supabase);
     }
 
-    async channel_user_notifications<T>(params: Channel_User_Notifications_DTO_Request, on_notification: (notification: unknown) => void): Promise<Channel | null> {
+    async channel_user_notifications(params: Channel_User_Notifications_DTO_Request, on_notification: (notification: unknown) => void): Promise<Channel | null> {
         return await supabase_channel_user_notifications(params, this.supabase, on_notification);
+    }
+    async get_notifications(params: Get_Notifications_DTO_Request): Promise<Formatted_Notification[] | Formatted_Notification | null> {
+        return await supabase_get_notifications(params, this.supabase)
     }
 }
 
