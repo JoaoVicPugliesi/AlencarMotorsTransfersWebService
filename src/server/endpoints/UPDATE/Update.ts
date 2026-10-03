@@ -17,7 +17,7 @@ class Update {
           this.server.update({
                url: '/update_profile',
                callback: update_profile_caller
-          })
+          });
           this.server.update({
                url: '/conclude_observation',
                callback: conclude_observation_caller

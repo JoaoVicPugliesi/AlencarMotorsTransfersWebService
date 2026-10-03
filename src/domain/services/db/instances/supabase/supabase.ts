@@ -39,6 +39,9 @@ import { Update_Observation_DTO_Request } from "../../../../../application/use_c
 import supabase_update_observation from "./use_cases/observations/supabase_update_observation.js";
 import { Update_Profile_DTO_Request } from "../../../../../application/use_cases/users/update_profile/update_profile_DTO.js";
 import supabase_update_profile from "./use_cases/users/supabase_update_profile.js";
+import { Channel_User_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/channel_user_notifications/channel_user_notifications_DTO.js";
+import supabase_channel_user_notifications from "./use_cases/notifications/supabase_channel_user_notifications.js";
+import Channel from "../../parts/Channel.js";
 
 class Supabase implements DB {
     private supabase;
@@ -108,6 +111,9 @@ class Supabase implements DB {
         return await supabase_update_observation(params, this.supabase);
     }
 
+    async channel_user_notifications<T>(params: Channel_User_Notifications_DTO_Request, on_notification: (notification: unknown) => void): Promise<Channel | null> {
+        return await supabase_channel_user_notifications(params, this.supabase, on_notification);
+    }
 }
 
 export default Supabase;

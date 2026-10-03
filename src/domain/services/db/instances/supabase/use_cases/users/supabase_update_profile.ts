@@ -15,7 +15,7 @@ async function supabase_update_profile (params: Update_Profile_DTO_Request, supa
 
 
     const { data, error } = await query;
-
+    console.log(data, error);
     if (error) {
         return {
             status: 400,
