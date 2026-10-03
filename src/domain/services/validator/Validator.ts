@@ -16,6 +16,7 @@ import { Get_Users_DTO_Request } from "../../../application/use_cases/users/get_
 import { Login_DTO_Request } from "../../../application/use_cases/users/login/login_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
 import { Post_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
+import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 
 interface Error {
     origin?: string;
@@ -70,6 +71,7 @@ interface Validator {
     update_observation(params: Update_Observation_DTO_Request): Validation_Result<Update_Observation_DTO_Request>;
 
     post_user_notifications(params: Post_User_Notifications_DTO_Request): Validation_Result<Post_User_Notifications_DTO_Request>;
+    post_notifications(params: Post_Notifications_DTO_Request): Validation_Result<Post_Notifications_DTO_Request>;
 }
 
 export default Validator;

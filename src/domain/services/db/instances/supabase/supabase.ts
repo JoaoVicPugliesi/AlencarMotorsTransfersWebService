@@ -47,6 +47,8 @@ import Formatted_Notification from "../../../../entitities/notification/Formatte
 import supabase_get_notifications from "./use_cases/notifications/supabase_get_notifications.js";
 import { Post_User_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
 import supabase_post_user_notifications from "./use_cases/notifications/supabase_post_user_notifications.js";
+import { Post_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
+import supabase_post_notifications from "./use_cases/notifications/supabase_post_notifications.js";
 
 class Supabase implements DB {
     private supabase;
@@ -124,6 +126,9 @@ class Supabase implements DB {
     }
     async post_user_notifications<T>(params: Post_User_Notifications_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_post_user_notifications(params, this.supabase);
+    }
+    async post_notifications<T>(params: Post_Notifications_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_post_notifications(params, this.supabase);
     }
 
 }
