@@ -19,6 +19,7 @@ import { Post_User_Notifications_DTO_Request } from "../../../application/use_ca
 import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
 import { Delete_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
+import { Update_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/update_user_notifications/update_user_notification_DTO.js";
 
 interface Error {
     origin?: string;
@@ -59,6 +60,7 @@ interface Validator {
     get_transfers(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
     get_transfer(params: Get_Transfers_DTO_Request): Validation_Result<Get_Transfers_DTO_Request>;
     post_transfer(params: Post_Transfer_DTO_Request): Validation_Result<Post_Transfer_DTO_Request>;
+    update_transfer(params: Update_Transfer_DTO_Request): Validation_Result<Update_Transfer_DTO_Request>;
     delete_transfer(params: Delete_Transfer_DTO_Request): Validation_Result<Delete_Transfer_DTO_Request>;
     conclude_transfer(params: Conclude_Transfer_DTO_Request): Validation_Result<Conclude_Transfer_DTO_Request>;
     reactivate_transfer(params: Reactivate_Transfer_DTO_Request): Validation_Result<Reactivate_Transfer_DTO_Request>;
@@ -75,6 +77,7 @@ interface Validator {
     post_user_notifications(params: Post_User_Notifications_DTO_Request): Validation_Result<Post_User_Notifications_DTO_Request>;
     post_notifications(params: Post_Notifications_DTO_Request): Validation_Result<Post_Notifications_DTO_Request>;
     delete_user_notification(params: Delete_User_Notification_DTO_Request): Validation_Result<Delete_User_Notification_DTO_Request>;
+    update_user_notification(params: Update_User_Notification_DTO_Request): Validation_Result<Update_User_Notification_DTO_Request>;
 }
 
 export default Validator;

@@ -53,6 +53,8 @@ import { Get_Transfer_Users_DTO_Request } from "../../../../../application/use_c
 import supabase_get_transfer_users from "./use_cases/transfers/supabase_get_transfer_users.js";
 import { Delete_User_Notification_DTO_Request } from "../../../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
 import supabase_delete_user_notification from "./use_cases/notifications/supabase_delete_user_notification.js";
+import { Update_User_Notification_DTO_Request } from "../../../../../application/use_cases/notifications/update_user_notifications/update_user_notification_DTO.js";
+import supabase_update_user_notification from "./use_cases/notifications/supabase_update_user_notification.js";
 
 class Supabase implements DB {
     private supabase;
@@ -139,6 +141,9 @@ class Supabase implements DB {
     }
     async delete_user_notification<T>(params: Delete_User_Notification_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_delete_user_notification(params, this.supabase);
+    }
+    async update_user_notification<T>(params: Update_User_Notification_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_update_user_notification(params, this.supabase);
     }
 
 }

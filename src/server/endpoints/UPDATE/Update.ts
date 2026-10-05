@@ -42,6 +42,10 @@ class Update {
                url: '/update_observation',
                callback: update_observation_caller
           })
+          this.server.update({
+               url: '/update_user_notification',
+               callback: update_observation_caller
+          })
      }
 }
 

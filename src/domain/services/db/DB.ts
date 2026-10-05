@@ -3,6 +3,7 @@ import { Delete_User_Notification_DTO_Request } from "../../../application/use_c
 import { Get_Notifications_DTO_Request } from "../../../application/use_cases/notifications/get_notifications/get_notifications_DTO.js";
 import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 import { Post_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
+import { Update_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/update_user_notifications/update_user_notification_DTO.js";
 import { Conclude_Observation_DTO_Request } from "../../../application/use_cases/observations/conclude_observation/conclude_observation_DTO.js";
 import { Delete_Observation_DTO_Request } from "../../../application/use_cases/observations/delete_observation/delete_observation_DTO.js";
 import { Get_Observation_DTO_Request } from "../../../application/use_cases/observations/get_observation/get_observation_DTO.js";
@@ -55,6 +56,8 @@ interface DB {
     post_user_notifications<T>(params: Post_User_Notifications_DTO_Request): Promise<DB_Response<T>>
     post_notifications<T>(params: Post_Notifications_DTO_Request): Promise<DB_Response<T>>
     delete_user_notification<T>(params: Delete_User_Notification_DTO_Request): Promise<DB_Response<T>>
+    update_user_notification<T>(params: Update_User_Notification_DTO_Request): Promise<DB_Response<T>>
+    
 }
 
 export default DB;
