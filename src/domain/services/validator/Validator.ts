@@ -18,6 +18,7 @@ import { Register_DTO_Request } from "../../../application/use_cases/users/regis
 import { Post_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
 import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
+import { Delete_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
 
 interface Error {
     origin?: string;
@@ -73,6 +74,7 @@ interface Validator {
 
     post_user_notifications(params: Post_User_Notifications_DTO_Request): Validation_Result<Post_User_Notifications_DTO_Request>;
     post_notifications(params: Post_Notifications_DTO_Request): Validation_Result<Post_Notifications_DTO_Request>;
+    delete_user_notification(params: Delete_User_Notification_DTO_Request): Validation_Result<Delete_User_Notification_DTO_Request>;
 }
 
 export default Validator;

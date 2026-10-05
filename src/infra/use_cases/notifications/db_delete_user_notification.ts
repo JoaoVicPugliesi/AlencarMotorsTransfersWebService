@@ -1,0 +1,9 @@
+import { Delete_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
+import User_Notifications from "../../../domain/entitities/notification/User_Notifications.js";
+import db from "../../db.js";
+
+async function db_delete_user_notification(params: Delete_User_Notification_DTO_Request) {
+    return await db.delete_user_notification<User_Notifications>(params);
+}
+
+export default db_delete_user_notification;

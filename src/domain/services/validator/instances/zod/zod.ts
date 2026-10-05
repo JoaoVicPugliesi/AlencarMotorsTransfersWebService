@@ -40,6 +40,8 @@ import { Post_Notifications_DTO_Request } from "../../../../../application/use_c
 import zod_post_notifications from "./use_cases/notifications/zod_post_notifications.js";
 import { Get_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
 import zod_get_transfer_users from "./use_cases/transfers/zod_get_transfer_users.js";
+import { Delete_User_Notification_DTO_Request } from "../../../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
+import zod_delete_user_notification from "./use_cases/notifications/zod_delete_user_notification.js";
 
 class Zod implements Validator {
 
@@ -108,6 +110,9 @@ class Zod implements Validator {
     }
     post_notifications(params: Post_Notifications_DTO_Request): Validation_Result<Post_Notifications_DTO_Request> {
         return zod_post_notifications(params);
+    }
+    delete_user_notification(params: Delete_User_Notification_DTO_Request): Validation_Result<Delete_User_Notification_DTO_Request> {
+        return zod_delete_user_notification(params);
     }
 }
 
