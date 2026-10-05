@@ -10,7 +10,7 @@ async function delete_transfer(params: Delete_Transfer_DTO_Request): Promise<Del
     const { status: u_status, message: u_message, payload: u_payload }: DB_Response<User> = await db_get_user({
         username: params.username
     });
-    if(u_status !== 200 || !u_payload || Array.isArray(u_payload)) {
+    if (u_status !== 200 || !u_payload || Array.isArray(u_payload)) {
         return {
             status: u_status,
             json: {
@@ -23,20 +23,29 @@ async function delete_transfer(params: Delete_Transfer_DTO_Request): Promise<Del
         password: params.password
     });
 
-    if(typeof verified_password !== 'boolean') {
+    if (typeof verified_password !== 'boolean') {
         return {
             status: verified_password.status,
             json: {
-                message: verified_password.message
+                message: verified_password.message,
             }
-        }
+        };
     }
 
-    const { status: d_status, message: d_message }= await db_delete_transfer({
+    if (!verified_password) {
+        return {
+            status: 401,
+            json: {
+                message: 'Senha incorreta',
+            }
+        };
+    }
+
+    const { status: d_status, message: d_message } = await db_delete_transfer({
         transfer_id: params.transfer_id
     });
 
-    if(d_status !== 200) {
+    if (d_status !== 200) {
         return {
             status: d_status,
             json: {

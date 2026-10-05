@@ -10,7 +10,7 @@ async function delete_observation(params: Delete_Observation_DTO_Request): Promi
     const { status: u_status, message: u_message, payload: u_payload }: DB_Response<User> = await db_get_user({
         username: params.username
     });
-    if(u_status !== 200 || !u_payload || Array.isArray(u_payload)) {
+    if (u_status !== 200 || !u_payload || Array.isArray(u_payload)) {
         return {
             status: u_status,
             json: {
@@ -23,20 +23,29 @@ async function delete_observation(params: Delete_Observation_DTO_Request): Promi
         password: params.password
     });
 
-    if(typeof verified_password !== 'boolean') {
+    if (typeof verified_password !== 'boolean') {
         return {
             status: verified_password.status,
             json: {
-                message: verified_password.message
+                message: verified_password.message,
             }
-        }
+        };
     }
 
-    const { status: ob_status, message: ob_message }= await db_delete_observation({
+    if (!verified_password) {
+        return {
+            status: 401,
+            json: {
+                message: 'Senha incorreta',
+            }
+        };
+    }
+
+    const { status: ob_status, message: ob_message } = await db_delete_observation({
         observation_id: params.observation_id
     });
 
-    if(ob_status !== 200) {
+    if (ob_status !== 200) {
         return {
             status: ob_status,
             json: {

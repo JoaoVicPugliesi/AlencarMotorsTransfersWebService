@@ -9,6 +9,7 @@ async function supabase_get_transfer_users<T>(params: Get_User_Transfers_DTO_Req
         .select('*')
         .eq('transfer_id', params.id)
     const { data, error } = await query;
+    console.log(data, error);
     if (error) {
         return {
             status: 400,
@@ -17,7 +18,7 @@ async function supabase_get_transfer_users<T>(params: Get_User_Transfers_DTO_Req
         }
     }
 
-    if(data.length === 0) {
+    if(!data) {
         return {
             status: 404,
             message: 'Sem Participantes',
@@ -26,7 +27,7 @@ async function supabase_get_transfer_users<T>(params: Get_User_Transfers_DTO_Req
     }
 
     return {
-        status: 201,
+        status: 200,
         message: 'Participantes achados',
         payload: data
     };
