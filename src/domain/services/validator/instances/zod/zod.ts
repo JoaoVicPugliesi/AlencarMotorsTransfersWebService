@@ -38,6 +38,8 @@ import { Post_User_Notifications_DTO_Request } from "../../../../../application/
 import zod_post_user_notifications from "./use_cases/notifications/zod_post_user_notifications.js";
 import { Post_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 import zod_post_notifications from "./use_cases/notifications/zod_post_notifications.js";
+import { Get_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
+import zod_get_transfer_users from "./use_cases/transfers/zod_get_transfer_users.js";
 
 class Zod implements Validator {
 
@@ -74,6 +76,9 @@ class Zod implements Validator {
     }
     update_transfer(params: Update_Transfer_DTO_Request): Validation_Result<Update_Transfer_DTO_Request> {
         return zod_update_transfer(params);
+    }
+    get_transfer_users(params: Get_Transfer_Users_DTO_Request): Validation_Result<Get_Transfer_Users_DTO_Request> {
+        return zod_get_transfer_users(params);
     }
     
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request> {

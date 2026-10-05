@@ -1,12 +1,12 @@
 import Transfer from "../../../../domain/entitities/transfer/Transfer.js";
 import Transfer_Users from "../../../../domain/entitities/transfer/Transfer_Users.js";
 import DB_Response from "../../../../domain/services/db/parts/DB_Response.js";
-import db_get_transfer_users from "../../../../infra/use_cases/transfers/db_get_transfer_users.js";
+import db_get_user_transfers from "../../../../infra/use_cases/transfers/db_get_user_transfers.js";
 import db_get_transfers from "../../../../infra/use_cases/transfers/db_get_transfers.js";
 import { Get_Transfers_DTO_Request, Get_Transfers_DTO_Response } from "./get_transfers_DTO.js";
 
 async function get_transfers(params: Get_Transfers_DTO_Request): Promise<Get_Transfers_DTO_Response> {
-    const transfer_users: DB_Response<Transfer_Users> = await db_get_transfer_users({
+    const transfer_users: DB_Response<Transfer_Users> = await db_get_user_transfers({
         id: params.id
     });
     const { status: t_u_status, message: t_u_message, payload: t_u_payload } = transfer_users;

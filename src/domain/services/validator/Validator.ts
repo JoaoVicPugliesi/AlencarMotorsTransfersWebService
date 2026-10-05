@@ -17,6 +17,7 @@ import { Login_DTO_Request } from "../../../application/use_cases/users/login/lo
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";
 import { Post_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_DTO.js";
 import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
+import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
 
 interface Error {
     origin?: string;
@@ -60,7 +61,7 @@ interface Validator {
     delete_transfer(params: Delete_Transfer_DTO_Request): Validation_Result<Delete_Transfer_DTO_Request>;
     conclude_transfer(params: Conclude_Transfer_DTO_Request): Validation_Result<Conclude_Transfer_DTO_Request>;
     reactivate_transfer(params: Reactivate_Transfer_DTO_Request): Validation_Result<Reactivate_Transfer_DTO_Request>;
-    update_transfer(params: Update_Transfer_DTO_Request): Validation_Result<Update_Transfer_DTO_Request>;
+    get_transfer_users(params: Get_Transfer_Users_DTO_Request): Validation_Result<Get_Transfer_Users_DTO_Request>;
     
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request>;
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request>;

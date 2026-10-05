@@ -12,7 +12,7 @@ function zod_post_notifications(
         generated_by: zod.string().nonempty(),
         created_at: zod.iso.datetime({
             local: true,
-            error: "A data de término deve ser um timestamp válido"
+            error: "Deve ser um timestamp válido"
         }),
     });
     const is_valid = schema.safeParse(params);

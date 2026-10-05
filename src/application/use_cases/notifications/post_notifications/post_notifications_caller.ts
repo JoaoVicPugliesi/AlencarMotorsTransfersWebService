@@ -12,7 +12,6 @@ async function post_notifications_caller (
     >, res: Response_Callback) {
     const params = req.body;
     const is_valid = validator.post_notifications(params);
-
     if (is_valid.success) {
         const response: Post_Notifications_DTO_Response = await post_notifications(params);
         res.status(response.status);

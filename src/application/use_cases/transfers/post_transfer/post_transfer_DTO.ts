@@ -12,7 +12,8 @@ interface Post_Transfer_DTO_Request extends Omit<Transfer, 'id' | 'final_date' |
 interface Post_Transfer_DTO_Response {
     status: number,
     json: {
-        message: string
+        message: string,
+        transfer: Transfer | null
     }
 }
 

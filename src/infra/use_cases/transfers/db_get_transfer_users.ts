@@ -1,4 +1,4 @@
-import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
+import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
 import Transfer_Users from "../../../domain/entitities/transfer/Transfer_Users.js";
 import db from "../../db.js";
 

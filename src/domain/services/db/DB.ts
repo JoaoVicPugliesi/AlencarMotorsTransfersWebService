@@ -12,7 +12,8 @@ import { Update_Observation_DTO_Request } from "../../../application/use_cases/o
 import { Conclude_Transfer_DTO_Request } from "../../../application/use_cases/transfers/conclude_transfer/conclude_transfer_DTO.js";
 import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/transfers/delete_transfer/delete_transfer_DTO.js";
 import { Get_Transfer_DTO_Request } from "../../../application/use_cases/transfers/get_transfer/get_transfer_DTO.js";
-import { Get_Transfer_Users_DTO_Request, Get_Transfers_Param } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
+import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
+import { Get_Transfers_Param, Get_User_Transfers_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Reactivate_Transfer_DTO_Request } from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import { Update_Transfer_DTO_Request } from "../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
@@ -33,11 +34,12 @@ interface DB {
     get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>>;
     post_transfer<T>(params: Omit<Post_Transfer_DTO_Request, 'participants'>): Promise<DB_Response<T>>;
     delete_transfer<T>(params: Pick<Delete_Transfer_DTO_Request, 'transfer_id'>): Promise<DB_Response<T>>;
-    get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
+    get_user_transfers<T>(params: Get_User_Transfers_DTO_Request): Promise<DB_Response<T>>;
     post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
     conclude_transfer<T>(params: Conclude_Transfer_DTO_Request): Promise<DB_Response<T>>
     reactivate_transfer<T>(params: Reactivate_Transfer_DTO_Request): Promise<DB_Response<T>>
-    update_transfer<T>(params: Update_Transfer_DTO_Request): Promise<DB_Response<T>>
+    update_transfer<T>(params: Update_Transfer_DTO_Request): Promise<DB_Response<T>>;
+    get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
     
     get_observation<T>(params: Get_Observation_DTO_Request): Promise<DB_Response<T>>;
     get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>>;

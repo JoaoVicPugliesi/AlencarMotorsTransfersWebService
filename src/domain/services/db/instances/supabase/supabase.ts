@@ -6,12 +6,11 @@ import supabase_register from "./use_cases/users/supabase_register.js";
 import supabase_get_users from "./use_cases/users/supabase_get_users.js";
 import supabase_post_transfer from "./use_cases/transfers/supabase_post_transfer.js";
 import supabase_post_transfer_users from "./use_cases/transfers/supabase_post_transfer_users.js";
-import supabase_get_transfer_users from "./use_cases/transfers/supabase_get_transfer_users.js";
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "./supabase_variables.js";
 import { Register_DTO_Request } from "../../../../../application/use_cases/users/register/register_DTO.js";
 import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
-import { Get_Transfer_Users_DTO_Request, Get_Transfers_Param } from "../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
+import { Get_Transfers_Param, Get_User_Transfers_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import supabase_get_transfers from "./use_cases/transfers/supabase_get_transfers.js";
 import { Get_Observations_DTO_Request } from "../../../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
 import supabase_get_observations from "./use_cases/observations/supabase_get_observations.js";
@@ -49,6 +48,9 @@ import { Post_User_Notifications_DTO_Request } from "../../../../../application/
 import supabase_post_user_notifications from "./use_cases/notifications/supabase_post_user_notifications.js";
 import { Post_Notifications_DTO_Request } from "../../../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
 import supabase_post_notifications from "./use_cases/notifications/supabase_post_notifications.js";
+import supabase_get_user_transfers from "./use_cases/transfers/supabase_get_user_transfers.js";
+import { Get_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
+import supabase_get_transfer_users from "./use_cases/transfers/supabase_get_transfer_users.js";
 
 class Supabase implements DB {
     private supabase;
@@ -80,8 +82,8 @@ class Supabase implements DB {
     async delete_transfer<T>(params: Pick<Delete_Transfer_DTO_Request, 'transfer_id'>): Promise<DB_Response<T>> {
         return await supabase_delete_transfer(params, this.supabase);
     }
-    async get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
-        return await supabase_get_transfer_users(params, this.supabase);
+    async get_user_transfers<T>(params: Get_User_Transfers_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_get_user_transfers(params, this.supabase);
     }
     async post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_post_transfer_users(params, this.supabase);
@@ -94,6 +96,9 @@ class Supabase implements DB {
     }
     async update_transfer<T>(params: Update_Transfer_DTO_Request): Promise<DB_Response<T>> {
         return await supabase_update_transfer(params, this.supabase);
+    }
+    async get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>> {
+        return await supabase_get_transfer_users(params, this.supabase);
     }
     
     async get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>> {

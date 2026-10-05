@@ -1,7 +1,7 @@
 import Transfer from "../../../../domain/entitities/transfer/Transfer.js";
 import User from "../../../../domain/entitities/user/User.js";
 
-interface Get_Transfer_Users_DTO_Request extends Pick<User, 'id'> {}
+interface Get_User_Transfers_DTO_Request extends Pick<User, 'id'> {}
 
 interface Get_Transfers_DTO_Request extends Pick<User, 'id'> {}
 
@@ -17,4 +17,4 @@ interface Get_Transfers_DTO_Response {
     }
 }
 
-export { Get_Transfers_DTO_Request, Get_Transfers_DTO_Response, Get_Transfers_Param, Get_Transfer_Users_DTO_Request };
+export { Get_Transfers_DTO_Request, Get_Transfers_DTO_Response, Get_Transfers_Param, Get_User_Transfers_DTO_Request };

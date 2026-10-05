@@ -2,12 +2,12 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import DB_Response from "../../../../parts/DB_Response.js";
 import { Get_User_Transfers_DTO_Request } from "../../../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 
-async function supabase_get_transfer_users<T>(params: Get_User_Transfers_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
+async function supabase_get_user_transfers<T>(params: Get_User_Transfers_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
     let query;
     query = supabase
         .from('transfer_users')
         .select('*')
-        .eq('transfer_id', params.id)
+        .eq('user_id', params.id)
     const { data, error } = await query;
     if (error) {
         return {
@@ -20,16 +20,16 @@ async function supabase_get_transfer_users<T>(params: Get_User_Transfers_DTO_Req
     if(data.length === 0) {
         return {
             status: 404,
-            message: 'Sem Participantes',
+            message: 'Sem transferências',
             payload: null
         }
     }
 
     return {
         status: 201,
-        message: 'Participantes achados',
+        message: 'Transferência achadas',
         payload: data
     };
 }
 
-export default supabase_get_transfer_users;
+export default supabase_get_user_transfers;

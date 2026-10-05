@@ -13,6 +13,7 @@ async function post_transfer (params: Post_Transfer_DTO_Request): Promise<Post_T
             status: is_auth.status,
             json: {
                 message: is_auth.message,
+                transfer: null
             }
         }
     }
@@ -32,7 +33,8 @@ async function post_transfer (params: Post_Transfer_DTO_Request): Promise<Post_T
         return {
             status: status,
             json: {
-                message: message
+                message: message,
+                transfer: null
             }
         }
     }
@@ -47,7 +49,8 @@ async function post_transfer (params: Post_Transfer_DTO_Request): Promise<Post_T
     return {
         status: 201,
         json: {
-            message: 'Transferência adicionada com sucesso'
+            message: 'Transferência adicionada com sucesso',
+            transfer: payload
         }
     }
 }
