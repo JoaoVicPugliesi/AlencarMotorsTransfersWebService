@@ -10,6 +10,7 @@ async function delete_transfer_caller(req: Request_Callback<
     Delete_Transfer_DTO_Request
 >, res: Response_Callback) {
     const params = req.query;
+    console.log(params);
     const is_valid = validator.delete_transfer(params);
 
     if (is_valid.success) {

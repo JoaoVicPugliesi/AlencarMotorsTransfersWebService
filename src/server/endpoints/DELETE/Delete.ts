@@ -12,7 +12,7 @@ class Delete {
 
     async run () {
        this.server.delete({
-            url: '/delete_trans fer',
+            url: '/delete_transfer',
             callback: delete_transfer_caller
        })
        this.server.delete({

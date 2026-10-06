@@ -1,3 +1,4 @@
+import update_user_notification_caller from "../../../application/use_cases/notifications/update_user_notifications/update_user_notification_caller.js";
 import conclude_observation_caller from "../../../application/use_cases/observations/conclude_observation/conclude_observation_caller.js";
 import reactivate_observation_caller from "../../../application/use_cases/observations/reactivate_observation/reactivate_observation_caller.js";
 import update_observation_caller from "../../../application/use_cases/observations/update_observation/update_observation_caller.js";
@@ -44,7 +45,7 @@ class Update {
           })
           this.server.update({
                url: '/update_user_notification',
-               callback: update_observation_caller
+               callback: update_user_notification_caller
           })
      }
 }

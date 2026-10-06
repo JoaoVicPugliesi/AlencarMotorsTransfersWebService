@@ -44,7 +44,7 @@ async function delete_transfer(params: Delete_Transfer_DTO_Request): Promise<Del
     const { status: d_status, message: d_message } = await db_delete_transfer({
         transfer_id: params.transfer_id
     });
-
+    console.log(d_status)
     if (d_status !== 200) {
         return {
             status: d_status,

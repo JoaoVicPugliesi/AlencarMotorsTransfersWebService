@@ -5,7 +5,7 @@ import DB_Response from "../../../../parts/DB_Response.js";
 async function supabase_update_user_notification<T>(params: Update_User_Notification_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
     let query;
     query = supabase
-    .from('transfers')
+    .from('user_notifications')
     .update({
         is_viewed: true,
         viewed_at: params.viewed_at
@@ -13,7 +13,6 @@ async function supabase_update_user_notification<T>(params: Update_User_Notifica
     .eq('user_id', params.user_id)
     .eq('notification_id', params.notification_id)
     const { data, error } = await query;
-
     if (error) {
         return {
             status: 400,
@@ -22,13 +21,6 @@ async function supabase_update_user_notification<T>(params: Update_User_Notifica
         }
     }
 
-    if (!data) {
-        return {
-            status: 404,
-            message: 'Erro ao visualizar notificação',
-            payload: null
-        }
-    }
     return {
         status: 200,
         message: 'Notificação visualizada com sucesso',

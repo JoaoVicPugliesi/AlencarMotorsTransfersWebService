@@ -9,7 +9,7 @@ async function supabase_delete_transfer (params: Pick<Delete_Transfer_DTO_Reques
     .eq('id', params.transfer_id)
 
     const { data, error } = await query;
-
+    console.log(error);
      if (error) {
         return {
             status: 400,
