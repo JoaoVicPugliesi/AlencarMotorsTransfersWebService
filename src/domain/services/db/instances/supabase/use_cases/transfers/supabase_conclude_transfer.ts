@@ -17,8 +17,7 @@ async function supabase_conclude_transfer<T>(params: Conclude_Transfer_DTO_Reque
     .maybeSingle();
 
     const { data, error } = await query;
-
-    console.log(data);
+    console.log(error);
     if(error) {
         return {
             status: 400,

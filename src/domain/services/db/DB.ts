@@ -1,4 +1,5 @@
 import { Channel_User_Notifications_DTO_Request } from "../../../application/use_cases/notifications/channel_user_notifications/channel_user_notifications_DTO.js";
+import { Delayed_Notification_DTO_Request } from "../../../application/use_cases/notifications/delayed_notification/delayed_notification_DTO.js";
 import { Delete_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
 import { Get_Notifications_DTO_Request } from "../../../application/use_cases/notifications/get_notifications/get_notifications_DTO.js";
 import { Post_Notifications_DTO_Request } from "../../../application/use_cases/notifications/post_notifications/post_notifications_DTO.js";
@@ -30,7 +31,7 @@ interface DB {
     get_user<T>(params: Pick<User, 'username'>): Promise<DB_Response<T>>;
     get_users<T>(): Promise<DB_Response<T>>;
     register<T>(params: Omit<Register_DTO_Request, 'admin_username'>): Promise<DB_Response<T>>;
-    update_profile<T>(params: Update_Profile_DTO_Request): Promise<DB_Response<T>>
+    update_profile<T>(params: Update_Profile_DTO_Request): Promise<DB_Response<T>>;
     
     get_transfer<T>(params: Get_Transfer_DTO_Request): Promise<DB_Response<T>>;
     get_transfers<T>(params: Get_Transfers_Param): Promise<DB_Response<T>>;
@@ -38,26 +39,26 @@ interface DB {
     delete_transfer<T>(params: Pick<Delete_Transfer_DTO_Request, 'transfer_id'>): Promise<DB_Response<T>>;
     get_user_transfers<T>(params: Get_User_Transfers_DTO_Request): Promise<DB_Response<T>>;
     post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
-    conclude_transfer<T>(params: Conclude_Transfer_DTO_Request): Promise<DB_Response<T>>
-    reactivate_transfer<T>(params: Reactivate_Transfer_DTO_Request): Promise<DB_Response<T>>
+    conclude_transfer<T>(params: Conclude_Transfer_DTO_Request): Promise<DB_Response<T>>;
+    reactivate_transfer<T>(params: Reactivate_Transfer_DTO_Request): Promise<DB_Response<T>>;
     update_transfer<T>(params: Update_Transfer_DTO_Request): Promise<DB_Response<T>>;
     get_transfer_users<T>(params: Get_Transfer_Users_DTO_Request): Promise<DB_Response<T>>;
-    
+
     get_observation<T>(params: Get_Observation_DTO_Request): Promise<DB_Response<T>>;
     get_observations<T>(params: Get_Observations_DTO_Request): Promise<DB_Response<T>>;
     post_observation<T>(params: Post_Observation_DTO_Request): Promise<DB_Response<T>>;
     delete_observation<T>(params: Pick<Delete_Observation_DTO_Request, 'observation_id'>): Promise<DB_Response<T>>;
-    conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>>
-    reactivate_observation<T>(params: Reactivate_Observation_DTO_Request): Promise<DB_Response<T>>
-    update_observation<T>(params: Update_Observation_DTO_Request): Promise<DB_Response<T>>
+    conclude_observation<T>(params: Conclude_Observation_DTO_Request): Promise<DB_Response<T>>;
+    reactivate_observation<T>(params: Reactivate_Observation_DTO_Request): Promise<DB_Response<T>>;
+    update_observation<T>(params: Update_Observation_DTO_Request): Promise<DB_Response<T>>;
 
-    get_notifications(params: Get_Notifications_DTO_Request): Promise<Formatted_Notification[] | Formatted_Notification | null>
-    channel_user_notifications(params: Channel_User_Notifications_DTO_Request,  on_notification: (notification: unknown) => void): Promise<Channel | null>
-    post_user_notifications<T>(params: Post_User_Notifications_DTO_Request): Promise<DB_Response<T>>
-    post_notifications<T>(params: Post_Notifications_DTO_Request): Promise<DB_Response<T>>
-    delete_user_notification<T>(params: Delete_User_Notification_DTO_Request): Promise<DB_Response<T>>
-    update_user_notification<T>(params: Update_User_Notification_DTO_Request): Promise<DB_Response<T>>
-    
+    get_notifications(params: Get_Notifications_DTO_Request): Promise<Formatted_Notification[] | Formatted_Notification | null>;
+    channel_user_notifications(params: Channel_User_Notifications_DTO_Request,  on_notification: (notification: unknown) => void): Promise<Channel | null>;
+    post_user_notifications<T>(params: Post_User_Notifications_DTO_Request): Promise<DB_Response<T>>;
+    post_notifications<T>(params: Post_Notifications_DTO_Request): Promise<DB_Response<T>>;
+    delete_user_notification<T>(params: Delete_User_Notification_DTO_Request): Promise<DB_Response<T>>;
+    update_user_notification<T>(params: Update_User_Notification_DTO_Request): Promise<DB_Response<T>>;
+    delayed_notification<T>(params: Delayed_Notification_DTO_Request): Promise<DB_Response<T>>;
 }
 
 export default DB;
