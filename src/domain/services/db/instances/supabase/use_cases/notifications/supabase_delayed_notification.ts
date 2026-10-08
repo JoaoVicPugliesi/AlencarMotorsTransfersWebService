@@ -20,19 +20,10 @@ async function supabase_delayed_notification<T>(params: Delayed_Notification_DTO
             payload: null
         }
     }
-
-    if(!data) {
-        return {
-            status: 404,
-            message: 'Dado não encontrado',
-            payload: null
-        }
-    }
-
     return {
         status: 200,
-        message: 'Dado encontrado',
-        payload: data
+        message: 'Atraso registrado',
+        payload: null
     }
 }
 

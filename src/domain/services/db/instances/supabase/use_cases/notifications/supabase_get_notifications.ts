@@ -61,8 +61,8 @@ async function supabase_get_notifications<T>(
     } = await supabase
         .from('notifications')
         .select('*')
-        .in('id', notifications_id);
-
+        .in('id', notifications_id)
+        .order('created_at', { ascending: false })
     if (notifications_error) return null;
     if (!notifications) return null;
     
@@ -101,6 +101,10 @@ async function supabase_get_notifications<T>(
                     notification
                 ): notification is Formatted_Notification =>
                     notification !== null
+            ).sort(
+                (a, b) => 
+                    new Date(b.created_at).getTime() -
+                    new Date(a.created_at).getTime()
             );
 
     return formatted_notifications;
