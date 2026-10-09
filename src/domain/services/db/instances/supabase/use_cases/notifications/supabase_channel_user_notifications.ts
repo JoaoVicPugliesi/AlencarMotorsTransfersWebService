@@ -20,11 +20,30 @@ async function supabase_channel_user_notifications(
                 on_notification(payload);
             }
         )
-        .subscribe((status, error) => {
-            if (error) return null;
-        });
+    return new Promise((resolve) => {
+        channel.subscribe((status, error) => {
 
-    return channel;
+            console.log(
+                `[Realtime] user ${params.id}:`,
+                status,
+                error
+            );
+
+            if (status === 'SUBSCRIBED') {
+                resolve(channel);
+                return;
+            }
+
+            if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+                console.error(
+                    `[Realtime] failed for user ${params.id}:`,
+                    error
+                );
+
+                resolve(null);
+            }
+        });
+    });
 }
 
 export default supabase_channel_user_notifications;

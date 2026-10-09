@@ -4,7 +4,7 @@ import Request_Callback from "../../../../domain/services/server/parts/Request_C
 import Response_Callback from "../../../../domain/services/server/parts/Response_Callback.js";
 
 async function channel_user_notifications_caller(
-    req: Request_Callback <
+    req: Request_Callback<
         unknown,
         unknown,
         Channel_User_Notifications_DTO_Request
@@ -19,6 +19,9 @@ async function channel_user_notifications_caller(
         'Connection': 'keep-alive',
         'Access-Control-Allow-Origin': '*'
     });
+    const heartbeat = setInterval(() => {
+        res.raw.write(': heartbeat\n\n');
+    }, 30000);
     const channel = await channel_user_notifications(
         params,
         (payload) => {
@@ -26,7 +29,10 @@ async function channel_user_notifications_caller(
             res.raw.write(`data: ${JSON.stringify(payload)}\n\n`);
         }
     );
-    if(!channel) return;
-    res.raw.on('close', async () => { await channel.unsubscribe(); });
+    if (!channel) return;
+    res.raw.on('close', async () => {
+        clearInterval(heartbeat);
+        await channel.unsubscribe();
+    });
 }
 export default channel_user_notifications_caller;
