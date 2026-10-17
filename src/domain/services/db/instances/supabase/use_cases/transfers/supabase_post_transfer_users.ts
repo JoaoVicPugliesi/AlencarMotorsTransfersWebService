@@ -1,6 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import { Post_Transfer_Users_DTO_Request } from "../../../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import DB_Response from "../../../../parts/DB_Response.js";
+import { Post_Transfer_Users_DTO_Request } from "../../../../../../../application/use_cases/transfers/post_transfer_users/post_transfer_users_DTO.js";
 
 async function supabase_post_transfer_users<T>(params: Post_Transfer_Users_DTO_Request, supabase: SupabaseClient): Promise<DB_Response<T>> {
     let query;
@@ -19,7 +19,7 @@ async function supabase_post_transfer_users<T>(params: Post_Transfer_Users_DTO_R
 
     return {
         status: 201,
-        message: 'Usuário adicionado a transferência com sucesso',
+        message: 'Usuário adicionado à transferência com sucesso',
         payload: null
     };
 }

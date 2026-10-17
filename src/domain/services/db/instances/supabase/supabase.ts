@@ -9,7 +9,7 @@ import supabase_post_transfer_users from "./use_cases/transfers/supabase_post_tr
 import { createClient } from "@supabase/supabase-js";
 import { SUPABASE_PUBLISHABLE_KEY, SUPABASE_URL } from "./supabase_variables.js";
 import { Register_DTO_Request } from "../../../../../application/use_cases/users/register/register_DTO.js";
-import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
+import { Post_Transfer_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
 import { Get_Transfers_Param, Get_User_Transfers_DTO_Request } from "../../../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
 import supabase_get_transfers from "./use_cases/transfers/supabase_get_transfers.js";
 import { Get_Observations_DTO_Request } from "../../../../../application/use_cases/observations/get_observations/get_observations_DTO.js";
@@ -57,6 +57,7 @@ import { Update_User_Notification_DTO_Request } from "../../../../../application
 import supabase_update_user_notification from "./use_cases/notifications/supabase_update_user_notification.js";
 import { Delayed_Notification_DTO_Request } from "../../../../../application/use_cases/notifications/delayed_notification/delayed_notification_DTO.js";
 import supabase_delayed_notification from "./use_cases/notifications/supabase_delayed_notification.js";
+import { Post_Transfer_Users_DTO_Request } from "../../../../../application/use_cases/transfers/post_transfer_users/post_transfer_users_DTO.js";
 
 class Supabase implements DB {
     private supabase;

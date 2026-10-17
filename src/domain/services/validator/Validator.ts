@@ -21,6 +21,7 @@ import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/t
 import { Delete_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/delete_notification/delete_user_notification_DTO.js";
 import { Update_User_Notification_DTO_Request } from "../../../application/use_cases/notifications/update_user_notifications/update_user_notification_DTO.js";
 import { Delayed_Notification_DTO_Request } from "../../../application/use_cases/notifications/delayed_notification/delayed_notification_DTO.js";
+import { Post_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/post_transfer_users/post_transfer_users_DTO.js";
 
 interface Error {
     origin?: string;
@@ -66,6 +67,7 @@ interface Validator {
     conclude_transfer(params: Conclude_Transfer_DTO_Request): Validation_Result<Conclude_Transfer_DTO_Request>;
     reactivate_transfer(params: Reactivate_Transfer_DTO_Request): Validation_Result<Reactivate_Transfer_DTO_Request>;
     get_transfer_users(params: Get_Transfer_Users_DTO_Request): Validation_Result<Get_Transfer_Users_DTO_Request>;
+    post_transfer_users(params: Post_Transfer_Users_DTO_Request): Validation_Result<Post_Transfer_Users_DTO_Request>;
     
     get_observation(params: Get_Observation_DTO_Request): Validation_Result<Get_Observation_DTO_Request>;
     get_observations(params: Get_Observations_DTO_Request): Validation_Result<Get_Observations_DTO_Request>;

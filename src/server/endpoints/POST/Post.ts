@@ -2,6 +2,7 @@ import post_notifications_caller from "../../../application/use_cases/notificati
 import post_user_notifications_caller from "../../../application/use_cases/notifications/post_user_notifications/post_user_notifications_caller.js";
 import post_observation_caller from "../../../application/use_cases/observations/post_observation/post_observation_caller.js";
 import post_transfer_caller from "../../../application/use_cases/transfers/post_transfer/post_transfer_caller.js";
+import post_transfer_users_caller from "../../../application/use_cases/transfers/post_transfer_users/post_transfer_users_caller.js";
 import login_caller from "../../../application/use_cases/users/login/login_caller.js";
 import register_caller from "../../../application/use_cases/users/register/register_caller.js";
 import Server from "../../../domain/services/server/Server.js";
@@ -27,15 +28,19 @@ class Post {
         this.server.post({
             url: '/post_observation',
             callback: post_observation_caller
-        })
+        });
         this.server.post({
             url: '/post_notifications',
             callback: post_notifications_caller
-        })
+        });
         this.server.post({
             url: '/post_user_notifications',
             callback: post_user_notifications_caller
-        })
+        });
+        this.server.post({
+            url: '/post_transfer_users',
+            callback: post_transfer_users_caller
+        });
     }
 }
 

@@ -20,12 +20,11 @@ async function channel_user_notifications_caller(
         'Access-Control-Allow-Origin': '*'
     });
     const heartbeat = setInterval(() => {
-        res.raw.write(': heartbeat\n\n');
+        res.raw.write('HEARTBEAT');
     }, 30000);
     const channel = await channel_user_notifications(
         params,
         (payload) => {
-            console.log(payload);
             res.raw.write(`data: ${JSON.stringify(payload)}\n\n`);
         }
     );

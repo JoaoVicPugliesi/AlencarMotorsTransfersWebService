@@ -17,7 +17,8 @@ import { Delete_Transfer_DTO_Request } from "../../../application/use_cases/tran
 import { Get_Transfer_DTO_Request } from "../../../application/use_cases/transfers/get_transfer/get_transfer_DTO.js";
 import { Get_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/get_transfer_participants/get_transfer_users_DTO.js";
 import { Get_Transfers_Param, Get_User_Transfers_DTO_Request } from "../../../application/use_cases/transfers/get_transfers/get_transfers_DTO.js";
-import { Post_Transfer_DTO_Request, Post_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
+import { Post_Transfer_DTO_Request } from "../../../application/use_cases/transfers/post_transfer/post_transfer_DTO.js";
+import { Post_Transfer_Users_DTO_Request } from "../../../application/use_cases/transfers/post_transfer_users/post_transfer_users_DTO.js";
 import { Reactivate_Transfer_DTO_Request } from "../../../application/use_cases/transfers/reactivate_transfer/reactivate_transfer_DTO.js";
 import { Update_Transfer_DTO_Request } from "../../../application/use_cases/transfers/update_transfer/update_transfer_DTO.js";
 import { Register_DTO_Request } from "../../../application/use_cases/users/register/register_DTO.js";

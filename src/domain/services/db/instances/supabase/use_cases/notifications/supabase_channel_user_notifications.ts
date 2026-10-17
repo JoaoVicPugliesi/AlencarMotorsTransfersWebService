@@ -22,24 +22,15 @@ async function supabase_channel_user_notifications(
         )
     return new Promise((resolve) => {
         channel.subscribe((status, error) => {
-
-            console.log(
-                `[Realtime] user ${params.id}:`,
-                status,
-                error
-            );
-
             if (status === 'SUBSCRIBED') {
                 resolve(channel);
                 return;
             }
-
             if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
                 console.error(
                     `[Realtime] failed for user ${params.id}:`,
                     error
                 );
-
                 resolve(null);
             }
         });
