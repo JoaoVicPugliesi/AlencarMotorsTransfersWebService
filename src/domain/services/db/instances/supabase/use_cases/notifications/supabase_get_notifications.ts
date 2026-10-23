@@ -38,8 +38,8 @@ async function supabase_get_notifications<T>(
         };
     }
 
-    const seven_days_ago = new Date();
-    seven_days_ago.setDate(seven_days_ago.getDate() - 7);
+    // const seven_days_ago = new Date();
+    // seven_days_ago.setDate(seven_days_ago.getDate() - 100);
     const {
         data: user_notifications,
         error: user_notifications_error
@@ -47,8 +47,6 @@ async function supabase_get_notifications<T>(
         .from('user_notifications')
         .select('user_id, notification_id, is_viewed')
         .eq('user_id', params.user_id)
-        .gte('notified_at', seven_days_ago.toISOString());
-
     if (user_notifications_error) return null;
     if (!user_notifications || user_notifications.length === 0) return [];
     const notifications_id = user_notifications.map(
@@ -63,6 +61,7 @@ async function supabase_get_notifications<T>(
         .select('*')
         .in('id', notifications_id)
         .order('created_at', { ascending: false })
+        .limit(20)
     if (notifications_error) return null;
     if (!notifications) return null;
     
@@ -76,16 +75,13 @@ async function supabase_get_notifications<T>(
     const formatted_notifications: Formatted_Notification[] =
         user_notifications
             .map(user_notification => {
-
                 const notification =
                     notifications_map.get(
                         user_notification.notification_id
                     );
-
                 if (!notification) {
                     return null;
                 }
-
                 return {
                     user_id: user_notification.user_id,
                     is_viewed: user_notification.is_viewed,

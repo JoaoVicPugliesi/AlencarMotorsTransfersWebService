@@ -10,7 +10,8 @@ interface Response_Callback {
         ): void;
 
         write(data: string): boolean;
-
+        destroyed(): boolean;
+        end(): void;
         on(
             event: string,
             callback: (...args: unknown[]) => void

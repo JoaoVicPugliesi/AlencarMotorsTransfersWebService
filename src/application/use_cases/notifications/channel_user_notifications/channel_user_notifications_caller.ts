@@ -17,18 +17,26 @@ async function channel_user_notifications_caller(
         'Content-Type': 'text/event-stream',
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive',
+        'X-Accel-Buffering': 'no',
         'Access-Control-Allow-Origin': '*'
     });
+    res.raw.write(': connected\n\n');
     const heartbeat = setInterval(() => {
-        res.raw.write('HEARTBEAT');
-    }, 30000);
+        res.raw.write(': heartbeat\n\n');
+    }, 15000);
     const channel = await channel_user_notifications(
         params,
         (payload) => {
             res.raw.write(`data: ${JSON.stringify(payload)}\n\n`);
         }
     );
-    if (!channel) return;
+    if (!channel) {
+        clearInterval(heartbeat);
+        if (!res.raw.destroyed) {
+            res.raw.end();
+        }
+        return;
+    }
     res.raw.on('close', async () => {
         clearInterval(heartbeat);
         await channel.unsubscribe();
