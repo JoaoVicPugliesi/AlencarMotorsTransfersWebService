@@ -10,7 +10,7 @@ interface Response_Callback {
         ): void;
 
         write(data: string): boolean;
-        destroyed(): boolean;
+        destroyed: boolean;
         end(): void;
         on(
             event: string,
