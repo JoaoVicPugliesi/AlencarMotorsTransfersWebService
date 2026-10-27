@@ -1,0 +1,31 @@
+async function supabase_get_observation(params, supabase) {
+    console.log(params);
+    let query;
+    query = supabase
+        .from('observations')
+        .select('*')
+        .eq('id', params.id)
+        .maybeSingle();
+    const { data, error } = await query;
+    if (error) {
+        return {
+            status: 400,
+            message: `Erro`,
+            payload: null
+        };
+    }
+    console.log(data);
+    if (!data) {
+        return {
+            status: 404,
+            message: 'Observação não encontrada',
+            payload: null
+        };
+    }
+    return {
+        status: 200,
+        message: 'Observação encontrada',
+        payload: data
+    };
+}
+export default supabase_get_observation;

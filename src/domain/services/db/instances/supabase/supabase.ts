@@ -62,7 +62,13 @@ import { Post_Transfer_Users_DTO_Request } from "../../../../../application/use_
 class Supabase implements DB {
     private supabase;
     constructor (){
-        this.supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        this.supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+        realtime: {
+            params: {
+                log_level: 'info'
+            }
+        }
+    });
     }
     async get_user<T>(params: Pick<User, 'username'>): Promise<DB_Response<T>> {
         return await supabase_get_user(params, this.supabase);
