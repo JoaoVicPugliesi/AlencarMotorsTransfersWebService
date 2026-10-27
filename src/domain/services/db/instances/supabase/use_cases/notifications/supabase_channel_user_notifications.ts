@@ -6,6 +6,9 @@ async function supabase_channel_user_notifications(
     supabase: SupabaseClient,
     on_notification: (payload: unknown) => void
 ): Promise<RealtimeChannel | null> {
+    console.log(
+    `[Realtime] CREATE user=${params.id} time=${new Date().toISOString()}`
+    );
     const channel = supabase
         .channel(`user-notifications-${params.id}`)
         .on(
@@ -22,18 +25,37 @@ async function supabase_channel_user_notifications(
         )
     return new Promise((resolve) => {
         channel.subscribe((status, error) => {
-            if (status === 'SUBSCRIBED') {
-                resolve(channel);
-                return;
+	 console.log(
+       `[Realtime] user=${params.id} status=${status}`,
+     error
+    );
+
+    if (status === 'SUBSCRIBED') {
+        console.log(
+            `[Realtime] subscribed for user ${params.id}`
+        );
+
+        resolve(channel);
+        return;
+    }
+
+    if (
+        status === 'CHANNEL_ERROR' ||
+        status === 'TIMED_OUT' ||
+        status === 'CLOSED'
+    ) {
+        console.error(
+            `[Realtime] channel failed for user ${params.id}`,
+            {
+                status,
+                error,
+                cause: error?.cause
             }
-            if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
-                console.error(
-                    `[Realtime] failed for user ${params.id}:`,
-                    error
-                );
-                resolve(null);
-            }
-        });
+        );
+
+        resolve(null);
+    }
+});
     });
 }
 
