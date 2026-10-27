@@ -3,15 +3,15 @@ interface Response_Callback {
     json(data: unknown): void;
 
     hijack(): void;
-    raw: { 
-	destroyed: boolean;
+    raw: {
         writeHead(
             statusCode: number,
             headers?: Record<string, string>
         ): void;
 
         write(data: string): boolean;
-	end(): void;
+        destroyed(): boolean;
+        end(): void;
         on(
             event: string,
             callback: (...args: unknown[]) => void
