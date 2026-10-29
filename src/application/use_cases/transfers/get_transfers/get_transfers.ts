@@ -4,8 +4,20 @@ import DB_Response from "../../../../domain/services/db/parts/DB_Response.js";
 import db_get_user_transfers from "../../../../infra/use_cases/transfers/db_get_user_transfers.js";
 import db_get_transfers from "../../../../infra/use_cases/transfers/db_get_transfers.js";
 import { Get_Transfers_DTO_Request, Get_Transfers_DTO_Response } from "./get_transfers_DTO.js";
+import cache from "../../../services/cache/cache.js";
 
 async function get_transfers(params: Get_Transfers_DTO_Request): Promise<Get_Transfers_DTO_Response> {
+    const cache_key = `transfers-${params.id}`;
+    const cached_transfers: Transfer[] | null = await cache.get<Transfer[]>(cache_key);
+    if(cached_transfers) {
+        return {
+            status: 200,
+            json: {
+                message: 'Transferências encontradas (cache)',
+                transfers: cached_transfers
+            }
+        }
+    }
     const transfer_users: DB_Response<Transfer_Users> = await db_get_user_transfers({
         id: params.id
     });
@@ -38,6 +50,8 @@ async function get_transfers(params: Get_Transfers_DTO_Request): Promise<Get_Tra
             }
         }
     }
+
+    await cache.set(cache_key, t_payload, 60 * 1);
     return {
         status: t_status,
         json: {

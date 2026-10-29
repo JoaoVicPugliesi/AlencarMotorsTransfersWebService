@@ -14,33 +14,26 @@ class Redis implements Cache {
             }
         });
     }
-
-    public async connect() {
-        await this.client.connect();
-    }
-
+    public async connect() { await this.client.connect(); }
     public async set<T>(
         key: string,
         value: T,
         ttl?: number
     ): Promise<void> {
         const serialized = JSON.stringify(value);
-
         if (ttl !== undefined) {
             await this.client.set(key, serialized, {
                 EX: ttl
             });
-
             return;
         }
-
         await this.client.set(key, serialized);
     }
 
     public async get<T>(key: string): Promise<T | null> {
         const value = await this.client.get(key);
         if (value === null) return null;
-        return JSON.parse(value) as T;
+        return JSON.parse(value);
     }
 
     public async delete(key: string): Promise<void> {
